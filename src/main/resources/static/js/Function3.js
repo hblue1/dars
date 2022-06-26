@@ -1,5 +1,7 @@
 $(document).ready(function(){
     alert("test");
+    alert("test2");
+    alert("test3");
 })
 
 // $(window).on("beforeunload",function(){
