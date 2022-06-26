@@ -37,9 +37,9 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootJar {
-	mainClassName = 'kr.ac.dars'
-}
+// bootJar {
+// 	mainClassName = 'kr.ac.dars'
+// }
 
 bootRun {
 	String activeProfile = System.properties['spring.profiles.active']
