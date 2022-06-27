@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    alert("test");
+    // alert("test");
 })
 
 function login() {
