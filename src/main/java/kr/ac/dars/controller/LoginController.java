@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.ac.dars.dto.LoginDto;
-import kr.ac.dars.service.LoginService;
+// import kr.ac.dars.dto.LoginDto;
+// import kr.ac.dars.service.LoginService;
 
 @Controller
 public class LoginController {
