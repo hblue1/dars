@@ -1,12 +1,12 @@
-// package kr.ac.dars.dao;
+package kr.ac.dars.dao;
 
-// import org.apache.ibatis.annotations.Mapper;
-// import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
-// import kr.ac.dars.dto.LoginDto;
+import kr.ac.dars.dto.LoginDto;
 
-// @Repository
-// @Mapper
-// public interface LoginDao {
-//     public int login(LoginDto dto);
-// }
+@Repository
+@Mapper
+public interface LoginDao {
+    public int login(LoginDto dto);
+}
