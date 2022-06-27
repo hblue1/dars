@@ -1,10 +1,10 @@
-// package kr.ac.dars.dto;
+package kr.ac.dars.dto;
 
-// import lombok.Data;
+import lombok.Data;
 
-// @Data
-// public class Function4Dto {
-//     private String index;
-//     private String filename;
-//     private String context;
-// }
+@Data
+public class Function4Dto {
+    private String index;
+    private String filename;
+    private String context;
+}
