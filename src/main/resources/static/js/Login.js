@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    alert("로그인 화면입니다.");
+    alert("로그인 화면입니다.");//확인
 })
 
 function login() {
