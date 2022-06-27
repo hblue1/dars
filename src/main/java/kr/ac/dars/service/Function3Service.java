@@ -61,6 +61,7 @@ public class Function3Service {
             channel = session.openChannel("sftp");
             channel.connect();
             result = "연결 성공";
+            
         } catch(JSchException je) {
             je.printStackTrace();
         } catch (Exception e) {
