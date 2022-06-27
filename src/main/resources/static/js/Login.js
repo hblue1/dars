@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    // alert("test");asd
+    alert("로그인 화면입니다.");
 })
 
 function login() {
