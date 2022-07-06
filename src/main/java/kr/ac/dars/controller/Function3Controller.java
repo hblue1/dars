@@ -20,7 +20,7 @@ public class Function3Controller {
     @RequestMapping(value = "/Function3")
     public String home(Model model)
     {
-        service.connect();
+        // service.connect();
         return "Function3.html";
     }
 

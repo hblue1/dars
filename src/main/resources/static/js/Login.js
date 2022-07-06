@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    alert("로그인 화면입니다.");//확인
+    
 })
 
 function login() {
@@ -7,7 +7,6 @@ function login() {
         id : $("#id").val(),
         password : $("#password").val()
     }
-    // console.log(data);
     $.ajax
     ({
         type: "POST",

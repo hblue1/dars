@@ -3,7 +3,6 @@ package kr.ac.dars.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
@@ -27,10 +26,11 @@ import kr.ac.dars.dto.Function4Dto;
 @Service
 @Transactional
 public class Function4Service {
-    private static final String host = "localhost";
-    private static final String userName = "dars";
-    private static final String password = "ds2022";
-    private static final int port = 8091;
+    private static final String host = "220.66.157.6";
+    // private static final String host = "localhost";
+    private static final String userName = "dragonseller_ftp";
+    private static final String password = "DragonSeller*";
+    private static final int port = 39540;
 
     private Session session = null;
     private Channel channel = null;
@@ -41,7 +41,6 @@ public class Function4Service {
 
     public List<Function4Dto> getAudioInfo(Function4Dto dto) {
         List<Function4Dto> result = dao.getAudioInfo(dto);
-        Collections.shuffle(result);
         return result;
     }
     public String connect() {
@@ -79,7 +78,7 @@ public class Function4Service {
 
         try
         {
-            String path = "/sound/function4";
+            String path = "/server/function4";
             channelSftp.cd(path);
             Vector<ChannelSftp.LsEntry> fileList = channelSftp.ls(path);
 

@@ -1,17 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/common/jquery-3.6.0.min.js"></script>
-    <script src="/js/common/jquery-ui.min.js"></script>
-    <script src="/js/Login.js"></script>
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.98.0">
+  <title>DARS LOGIN</title>
+
+  <script src="/js/common/jquery-3.6.0.min.js"></script>
+  <script src="/js/common/jquery-ui.min.js"></script>
+  <script src="/js/common/bootstrap.js"></script>
+  <script src="/js/common/bootstrap.min.js"></script>
+  <script src="/js/Login.js"></script>
+  <link rel="stylesheet" href="/css/common/bootstrap.css">
+  <link rel="stylesheet" href="/css/common/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/signin.css" >
 </head>
-<body>
-    <input type = "text" id = "id"><br>
-    <input type = "password" id = "password"><br>
-    <a href = "javascript:login()">로그인</button>
+
+<body class="text-center">
+  <main class="form-signin w-100 m-auto">
+    <form>
+      <img class="mb-4" src="/img/logo.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+      <div class="form-floating">
+        <input type="text" class="form-control" id="id" placeholder="name@example.com">
+        <label for="floatingInput">id</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="button" onclick="javascript:login();">Sign in</button>
+    </form>
+  </main>
 </body>
 </html>

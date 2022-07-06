@@ -26,10 +26,11 @@ import kr.ac.dars.dto.Function3Dto;
 @Service
 @Transactional
 public class Function3Service {
-    private static final String host = "localhost";
-    private static final String userName = "dars";
-    private static final String password = "ds2022";
-    private static final int port = 8091;
+    private static final String host = "220.66.157.6";
+    // private static final String host = "localhost";
+    private static final String userName = "dragonseller_ftp";
+    private static final String password = "DragonSeller*";
+    private static final int port = 39540;
 
     private Session session = null;
     private Channel channel = null;
@@ -82,12 +83,12 @@ public class Function3Service {
 
         try
         {
-            String path = "/sound/function3/" + dto.getTopic();
+            String path = "/server/function3/" + dto.getTopic();
             channelSftp.cd(path);
             Vector<ChannelSftp.LsEntry> fileList = channelSftp.ls(path);
 
             for(ChannelSftp.LsEntry entry : fileList) {
-                if(!("[Q]"+dto.getTitle()+".wav").equals(entry.getFilename()))
+                if(!(dto.getTitle()+".wav").equals(entry.getFilename()))
                 {
                     continue;
                 }
