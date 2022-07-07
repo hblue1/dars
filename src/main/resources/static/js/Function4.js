@@ -69,7 +69,6 @@ function changeFile() {
         success: function(result)
         {
             getAudioFile(result);
-            console.log(result);
             shuffle(result);
             var context = "";
             for(var i = 0; i < result.length; i++) {
@@ -93,6 +92,7 @@ function getAudioFile(x) {
     var data = {
         data : JSON.stringify(filename).replace(/\"/gi, "")
     };
+    console.log(data);
     $.ajax({
         type:"POST",
         url:"/Function4/getAudioFile",
