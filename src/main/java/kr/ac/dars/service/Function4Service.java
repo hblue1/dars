@@ -48,7 +48,7 @@ public class Function4Service {
     }
     
     public String connect() {
-        String result = "연결 실패";
+        String result = "connection failed";
         try{
             ftpClient = new FTPClient();
 
@@ -56,7 +56,7 @@ public class Function4Service {
             ftpClient.login(userName, password);
             ftpClient.enterLocalPassiveMode();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-            result = "연결 성공";
+            result = "connection success";
         }
         catch(IOException e) {
             e.printStackTrace();
