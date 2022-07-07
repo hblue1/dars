@@ -74,7 +74,7 @@ function changeFile() {
                 context += (i+1) + ". " + result[i].context + "<br>";
             }
             $("#context").append(context);
-            // getAudioFile(result);
+            getAudioFile(result);
         }
     })
 }
