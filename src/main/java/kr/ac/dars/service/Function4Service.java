@@ -89,15 +89,11 @@ public class Function4Service {
             for (int i = 0; i < path_arr.length; i++) {
                 String directory = path_arr[i];
                 if (directory != null && directory.length() > 0) {
-                    // 경로를 찾아 들어 간다.
-                    if (!ftpClient.changeWorkingDirectory(directory)) {
-                        System.out.println("해당 경로가 없습니다!");
-                        break;
-                    }
+                    ftpClient.changeWorkingDirectory(directory);
                     System.out.println(ftpClient.printWorkingDirectory());
                 }
             }
-            System.out.println("최종 경로"+ftpClient.printWorkingDirectory());
+            System.out.println("last path:"+ftpClient.printWorkingDirectory());
             for(String file : filename)
             {
                 inputStream = ftpClient.retrieveFileStream(file);
