@@ -102,6 +102,7 @@ public class Function4Service {
                 inputStream = ftpClient.retrieveFileStream(file);
                 byte[] fileArray = IOUtils.toByteArray(inputStream);
                 String b64string = new String(Base64.encodeBase64(fileArray));
+                System.out.println(b64string);
                 result.add("data:audio/wav;base64, "+b64string);
             }
         } catch (IOException ex) {
