@@ -81,7 +81,7 @@ public class Function4Service {
 
     public List<String> getAudioFile(List<String> filename) {
         List<String> result = new ArrayList<String>();
-        String path = "/server/function4";
+        String path = "server/function4";
         InputStream inputStream = null;
         try {
             // 경로를 / 구분
