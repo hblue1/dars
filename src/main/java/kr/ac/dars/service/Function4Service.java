@@ -88,10 +88,11 @@ public class Function4Service {
             String path_arr[] = path.split("/");
             for (int i = 0; i < path_arr.length; i++) {
                 String directory = path_arr[i];
-                if (directory != null && directory.length() > 0) {
+                System.out.println(directory);
+                // if (directory != null && directory.length() > 0) {
                     ftpClient.changeWorkingDirectory(directory);
                     System.out.println(ftpClient.printWorkingDirectory());
-                }
+                // }
             }
             System.out.println("last path:"+ftpClient.printWorkingDirectory());
             for(String file : filename)

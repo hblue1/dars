@@ -22,7 +22,7 @@ public class Function4Controller {
     @RequestMapping(value = "/Function4")
     public String home(Model model)
     {
-        System.out.println(service.connect());
+        // System.out.println(service.connect());
         return "Function4.html";
     }
 
