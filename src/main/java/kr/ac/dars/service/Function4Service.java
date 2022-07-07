@@ -96,6 +96,7 @@ public class Function4Service {
                 }
             }
             System.out.println("last path:"+ftpClient.printWorkingDirectory());
+            System.out.println("last path:"+ftpClient.listNames(path));
             for(String file : filename)
             {
                 inputStream = ftpClient.retrieveFileStream(file);
