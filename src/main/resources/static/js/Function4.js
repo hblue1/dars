@@ -68,13 +68,14 @@ function changeFile() {
         data:data,
         success: function(result)
         {
+            getAudioFile(result);
+            console.log(result);
             shuffle(result);
             var context = "";
             for(var i = 0; i < result.length; i++) {
                 context += (i+1) + ". " + result[i].context + "<br>";
             }
             $("#context").append(context);
-            getAudioFile(result);
         }
     })
 }
