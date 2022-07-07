@@ -94,9 +94,10 @@ public class Function4Service {
                         System.out.println("해당 경로가 없습니다!");
                         break;
                     }
+                    System.out.println(ftpClient.printWorkingDirectory());
                 }
             }
-            System.out.println(ftpClient.printWorkingDirectory());
+            System.out.println("최종 경로"+ftpClient.printWorkingDirectory());
             for(String file : filename)
             {
                 inputStream = ftpClient.retrieveFileStream(file);
