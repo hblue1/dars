@@ -85,14 +85,14 @@ public class Function4Service {
         InputStream inputStream = null;
         try {
             // 경로를 / 구분
-            System.out.println(ftpClient.changeWorkingDirectory(path));
             String path_arr[] = path.split("/");
             for (int i = 0; i < path_arr.length; i++) {
                 String directory = path_arr[i];
                 if (directory != null && directory.length() > 0) {
-                    ftpClient.changeWorkingDirectory(directory);
-                    System.out.println(ftpClient.changeWorkingDirectory(directory));
-                    System.out.println(ftpClient.printWorkingDirectory());
+                    if(ftpClient.changeWorkingDirectory(directory)){
+                        System.out.println(ftpClient.changeWorkingDirectory(directory));
+                        System.out.println(ftpClient.printWorkingDirectory());
+                    }
                 }
             }
             System.out.println("last path:"+ftpClient.printWorkingDirectory());
