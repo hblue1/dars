@@ -26,7 +26,6 @@ import kr.ac.dars.dto.Function4Dto;
 @Service
 @Transactional
 public class Function4Service {
-    // private static final String host = "220.66.157.6";
     private static final String host = "localhost";
     private static final String userName = "dragonseller_ftp";
     private static final String password = "DragonSeller*";
@@ -57,7 +56,6 @@ public class Function4Service {
             config.put("StrictHostKeyChecking", "no");
 
             session.setConfig(config);
-            System.out.println("막히는 곳은 여기");
             session.connect();
 
             channel = session.openChannel("sftp");

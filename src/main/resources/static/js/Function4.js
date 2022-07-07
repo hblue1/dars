@@ -55,6 +55,7 @@ function selectFile(select) {
 }
 
 function changeFile() {
+    $("#context").text("");
     if($("#num").val() == "선택해주세요") {
         return 0;
     }
@@ -67,14 +68,19 @@ function changeFile() {
         data:data,
         success: function(result)
         {
+            shuffle(result);
             var context = "";
             for(var i = 0; i < result.length; i++) {
                 context += (i+1) + ". " + result[i].context + "<br>";
             }
             $("#context").append(context);
-            getAudioFile(result);
+            // getAudioFile(result);
         }
     })
+}
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
 }
 
 function getAudioFile(x) {
