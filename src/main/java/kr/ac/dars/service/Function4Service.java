@@ -82,8 +82,9 @@ public class Function4Service {
     public List<String> getAudioFile(List<String> filename) {
         List<String> result = new ArrayList<String>();
         String path = "server/function4";
-        InputStream inputStream = null;
+        InputStream inputStream = null; 
         try {
+            System.out.println(ftpClient.printWorkingDirectory());
             // 경로를 / 구분
             String path_arr[] = path.split("/");
             for (int i = 0; i < path_arr.length; i++) {
