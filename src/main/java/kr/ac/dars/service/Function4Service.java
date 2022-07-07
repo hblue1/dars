@@ -91,6 +91,7 @@ public class Function4Service {
                 String directory = path_arr[i];
                 if (directory != null && directory.length() > 0) {
                     ftpClient.changeWorkingDirectory(directory);
+                    System.out.println(ftpClient.changeWorkingDirectory(directory));
                     System.out.println(ftpClient.printWorkingDirectory());
                 }
             }
