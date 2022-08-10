@@ -72,6 +72,7 @@ function changeFile() {
         data:data,
         success: function(result)
         {
+            getAudioFile();
             shuffle(result);
             var context = "";
             for(var i = 0; i < result.length; i++) {
@@ -86,7 +87,7 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-function getAudioFile(x) { 
+function getAudioFile() { 
     // var filename = new Array();
     // for(var i = 0; i < x.length; i++)
     // {
@@ -101,6 +102,7 @@ function getAudioFile(x) {
         data:data,
         success:function(result)
         {
+            console.log(result);
             $("#audio").attr("src",result);
         }
     })
