@@ -104,6 +104,5 @@ function getAudioFile() {
 }
 
 function playAudioFile() {
-    var audio = document.getElementById("audio");
-    audio.play();
+    $("#audio").play();
 }
