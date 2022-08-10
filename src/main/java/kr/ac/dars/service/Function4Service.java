@@ -107,7 +107,6 @@ public class Function4Service {
             //     // System.out.println(b64string);
             //     result.add("data:audio/wav;base64, "+b64string);
             // }
-            
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
