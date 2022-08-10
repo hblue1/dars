@@ -20,6 +20,8 @@ function changeFile() {
         data:data,
         success: function(result)
         {
+            console.log(result.speechcontext);
+            console.log(result.questioncontext);
             getAudioFile();
             $("#speechContext").append(result.speechcontext);
             var context = result.questioncontext + "<br>";

@@ -2,7 +2,6 @@ package kr.ac.dars.service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTP;
@@ -28,8 +27,8 @@ public class Function2Service {
 
     FTPClient ftpClient = null;
 
-    public List<Function2Dto> getAudioInfo(Function2Dto dto) {
-        List<Function2Dto> result = dao.getAudioInfo(dto);
+    public Function2Dto getAudioInfo(Function2Dto dto) {
+        Function2Dto result = dao.getAudioInfo(dto);
         return result;
     }
 
