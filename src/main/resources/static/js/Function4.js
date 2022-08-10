@@ -72,7 +72,7 @@ function changeFile() {
         data:data,
         success: function(result)
         {
-            getAudioFile(result);
+            $("#audio").attr("src",result);
             shuffle(result);
             var context = "";
             for(var i = 0; i < result.length; i++) {
@@ -87,23 +87,23 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-function getAudioFile(x) {
-    var filename = new Array();
-    for(var i = 0; i < x.length; i++)
-    {
-        filename.push(x[i].filename+".wav");
-    }
-    var data = {
-        data : JSON.stringify(filename).replace(/\"/gi, "")
-    };
-    console.log(data);
-    $.ajax({
-        type:"POST",
-        url:"/Function4/getAudioFile",
-        data:data,
-        success:function(result)
-        {
-            $("#audio").attr("src",result[0]);
-        }
-    })
-}
+// function getAudioFile(x) {
+    // var filename = new Array();
+    // for(var i = 0; i < x.length; i++)
+    // {
+    //     filename.push(x[i].filename+".wav");
+    // }
+    // var data = {
+    //     data : JSON.stringify(filename).replace(/\"/gi, "")
+    // };
+    // console.log(data);
+    // $.ajax({
+    //     type:"POST",
+    //     url:"/Function4/getAudioFile",
+    //     data:data,
+    //     success:function(result)
+    //     {
+    //         $("#audio").attr("src",result[0]);
+    //     }
+    // })
+// }
