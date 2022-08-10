@@ -87,24 +87,22 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-function getAudioFile() { 
-    // var filename = new Array();
-    // for(var i = 0; i < x.length; i++)
-    // {
-    //     filename.push(x[i].filename+".wav");
-    // }
+function getAudioFile() {
     var data = {
         index : $("#num").val()
     }
-    console.log(data);
-    // $.ajax({
-    //     type:"POST",
-    //     url:"/Function4/getAudioFile",
-    //     data:data,
-    //     success:function(result)
-    //     {
-    //         console.log(result);
-    //         $("#audio").attr("src",result);
-    //     }
-    // })
+    $.ajax({
+        type:"POST",
+        url:"/Function4/getAudioFile",
+        data:data,
+        success:function(result)
+        {
+            $("#audio").attr("src",result);
+        }
+    })
+}
+
+function playAudioFile() {
+    var audio = document.getElementById("audio");
+    audio.play();
 }

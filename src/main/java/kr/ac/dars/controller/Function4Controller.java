@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.dars.dto.Function4Dto;
@@ -40,11 +39,8 @@ public class Function4Controller {
 
     @PostMapping(value = "/Function4/getAudioFile")
     @ResponseBody
-    public String getAudioFile(@RequestParam(value = "data") String filename)
-    {
-        String newFilename = filename.replace("[","");
-        newFilename = filename.replace("]", "");
-        
-        return service.getAudioFile(newFilename);
+    public String getAudioFile(Function4Dto dto)
+    {   
+        return service.getAudioFile(dto.getIndex());
     }
 }

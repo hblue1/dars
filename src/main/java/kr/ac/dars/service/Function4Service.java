@@ -90,18 +90,16 @@ public class Function4Service {
                 if (directory != null && directory.length() > 0) {
                     String temp = "/" + directory;
                     if(ftpClient.changeWorkingDirectory(ftpClient.printWorkingDirectory()+temp)){
-                        System.out.println(ftpClient.printWorkingDirectory()+"폴더 조회 성공");
+                        System.out.println("current folder: "+ftpClient.printWorkingDirectory());
                     }
                 }
             }
-            // System.out.println("최종 경로:"+ftpClient.printWorkingDirectory());
             // for(String str : ftpClient.listNames()) {
             //     System.out.println("filename:"+str);
             // }
-            inputStream = ftpClient.retrieveFileStream(filename);
+            inputStream = ftpClient.retrieveFileStream(filename+".wav");
             byte[] fileArray = IOUtils.toByteArray(inputStream);
             String b64string = new String(Base64.encodeBase64(fileArray));
-            // System.out.println(b64string);
             result = "data:audio/wav;base64, "+b64string;
         } catch (IOException ex) {
             ex.printStackTrace();
