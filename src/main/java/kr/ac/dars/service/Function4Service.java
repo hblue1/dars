@@ -99,6 +99,7 @@ public class Function4Service {
             for(String str : ftpClient.listNames()) {
                 System.out.println("filename:"+str);
             }
+            
             // for(String file : filename)
             // {
             //     inputStream = ftpClient.retrieveFileStream(file);
