@@ -1,6 +1,5 @@
 package kr.ac.dars.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +40,10 @@ public class Function4Controller {
 
     @PostMapping(value = "/Function4/getAudioFile")
     @ResponseBody
-    public List<String> getAudioFile(@RequestParam(value = "data") List<String> filename)
+    public String getAudioFile(@RequestParam(value = "data") String filename)
     {
-        List<String> newFilename = new ArrayList<String>();
-        for(String str : filename)
-        {
-            str = str.replace("[","");
-            str = str.replace("]", "");
-            newFilename.add(str);
-        }
+        String newFilename = filename.replace("[","");
+        newFilename = filename.replace("]", "");
         
         return service.getAudioFile(newFilename);
     }

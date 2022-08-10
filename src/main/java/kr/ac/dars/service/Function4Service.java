@@ -2,7 +2,6 @@ package kr.ac.dars.service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 // import java.util.Properties;
 // import java.util.Vector;
@@ -79,8 +78,8 @@ public class Function4Service {
 
     // 경로, 파일명, 파일을 받아 해당 경로에 파일을 파일명으로 저장한다.
 
-    public List<String> getAudioFile(List<String> filename) {
-        List<String> result = new ArrayList<String>();
+    public String getAudioFile(String filename) {
+        String result = "";
         String path = "Server/function4";
         InputStream inputStream = null;
         try {
@@ -95,19 +94,15 @@ public class Function4Service {
                     }
                 }
             }
-            System.out.println("최종 경로:"+ftpClient.printWorkingDirectory());
-            for(String str : ftpClient.listNames()) {
-                System.out.println("filename:"+str);
-            }
-            
-            // for(String file : filename)
-            // {
-            //     inputStream = ftpClient.retrieveFileStream(file);
-            //     byte[] fileArray = IOUtils.toByteArray(inputStream);
-            //     String b64string = new String(Base64.encodeBase64(fileArray));
-            //     // System.out.println(b64string);
-            //     result.add("data:audio/wav;base64, "+b64string);
+            // System.out.println("최종 경로:"+ftpClient.printWorkingDirectory());
+            // for(String str : ftpClient.listNames()) {
+            //     System.out.println("filename:"+str);
             // }
+            inputStream = ftpClient.retrieveFileStream(filename);
+            byte[] fileArray = IOUtils.toByteArray(inputStream);
+            String b64string = new String(Base64.encodeBase64(fileArray));
+            // System.out.println(b64string);
+            result = "data:audio/wav;base64, "+b64string;
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
