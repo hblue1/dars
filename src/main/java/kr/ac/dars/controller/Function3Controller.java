@@ -41,7 +41,6 @@ public class Function3Controller {
     @ResponseBody
     public String getAudioFile(Function3Dto dto)
     {
-        System.out.println(dto);
         return service.getAudioFile(dto);
     }
 }
