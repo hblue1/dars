@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+    var checkShow = false;
 })
 
 function selectFile(select) {
@@ -84,8 +84,12 @@ function getAudioFile() {
 }
 
 function showContext() {
-    console.log("눌림");
-    $("#speechContext").show();
+    if(!checkShow) {
+        $("#speechContext").show();
+    }
+    else {
+        $("#speechContext").hide();
+    }
 }
 
 function playAudioFile() {

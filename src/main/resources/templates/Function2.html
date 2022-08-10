@@ -4,9 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="/js/common/jquery-3.6.0.min.js"></script>
+    <script src="/js/common/jquery-ui.min.js"></script>
+    <script src="/js/Function3.js"></script>
+    <script src="/js/common/bootstrap.js"></script>
+    <script src="/js/common/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/common/bootstrap.css">
+    <link rel="stylesheet" href="/css/common/bootstrap.min.css">
+    <title>짧은 이야기 듣기</title>
 </head>
 <body>
-    기능 2 입니다.
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">청각 검사 플랫폼</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <label for = "speechCode">문제 번호를 입력하세요</label>
+    <input type = "text" id = "speechCode">
+    <button onclick="javascript:changeFile()">문제 조회</button>
+    <br>
+    다음 문장과 질문을 듣고 답해 보세요.<br><br>
+    <p id = "speechContext"> </p><br>
+    <p id = "questionContext"> 정답은 무엇입니까?</p><br>
+    <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile()">
+    <audio controls id = "audio" hidden = true>
+        <source src="" type="audio/wav">
+    </audio>
+    <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext()">
+    <br>
 </body>
 </html>
