@@ -60,7 +60,6 @@ function selectFile(select) {
 
 function changeFile() {
     $("#context").text("");
-    console.log($("#audio").attr())
     if($("#num").val() == "선택해주세요") {
         return 0;
     }
