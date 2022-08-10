@@ -72,7 +72,8 @@ function changeFile() {
         data:data,
         success: function(result)
         {
-            $("#audio").attr("src",result);
+            console.log(result);
+            // $("#audio").attr("src",result);
             shuffle(result);
             var context = "";
             for(var i = 0; i < result.length; i++) {
