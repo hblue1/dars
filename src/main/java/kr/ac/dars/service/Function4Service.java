@@ -81,7 +81,7 @@ public class Function4Service {
 
     public List<String> getAudioFile(List<String> filename) {
         List<String> result = new ArrayList<String>();
-        String path = "server/function4";
+        String path = "Server/function4";
         InputStream inputStream = null;
         try {
             // 경로를 / 구분
@@ -89,24 +89,24 @@ public class Function4Service {
             for (int i = 0; i < path_arr.length; i++) {
                 String directory = path_arr[i];
                 if (directory != null && directory.length() > 0) {
-                    if(ftpClient.changeWorkingDirectory(directory)){
-                        System.out.println(ftpClient.changeWorkingDirectory(directory));
-                        System.out.println(ftpClient.printWorkingDirectory());
+                    String temp = "/" + directory;
+                    if(ftpClient.changeWorkingDirectory(ftpClient.printWorkingDirectory()+temp)){
+                        System.out.println(ftpClient.printWorkingDirectory()+"폴더 조회 성공");
                     }
                 }
             }
-            System.out.println("last path:"+ftpClient.printWorkingDirectory());
+            System.out.println("최종 경로:"+ftpClient.printWorkingDirectory());
             for(String str : ftpClient.listNames()) {
                 System.out.println("filename:"+str);
             }
-            for(String file : filename)
-            {
-                inputStream = ftpClient.retrieveFileStream(file);
-                byte[] fileArray = IOUtils.toByteArray(inputStream);
-                String b64string = new String(Base64.encodeBase64(fileArray));
-                System.out.println(b64string);
-                result.add("data:audio/wav;base64, "+b64string);
-            }
+            // for(String file : filename)
+            // {
+            //     inputStream = ftpClient.retrieveFileStream(file);
+            //     byte[] fileArray = IOUtils.toByteArray(inputStream);
+            //     String b64string = new String(Base64.encodeBase64(fileArray));
+            //     // System.out.println(b64string);
+            //     result.add("data:audio/wav;base64, "+b64string);
+            // }
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
