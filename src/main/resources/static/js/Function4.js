@@ -96,14 +96,15 @@ function getAudioFile() {
     var data = {
         index : $("#num").val()
     }
-    $.ajax({
-        type:"POST",
-        url:"/Function4/getAudioFile",
-        data:data,
-        success:function(result)
-        {
-            console.log(result);
-            $("#audio").attr("src",result);
-        }
-    })
+    console.log(data);
+    // $.ajax({
+    //     type:"POST",
+    //     url:"/Function4/getAudioFile",
+    //     data:data,
+    //     success:function(result)
+    //     {
+    //         console.log(result);
+    //         $("#audio").attr("src",result);
+    //     }
+    // })
 }
