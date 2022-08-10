@@ -41,32 +41,35 @@
         </div>
     </nav>
     <br><br><br>
-    <label for = "topic">주제를 선택하세요</label>
-    <select id = "topic" onchange="javascript:selectFile(this)">
+    <label for="topic">주제를 선택하세요</label>
+    <select id="topic" onchange="javascript:selectFile(this)">
         <option>선택해주세요.</option>
-        <option value = "health">건강</option>
-        <option value = "etc">기타</option>
-        <option value = "country">나라</option>
-        <option value = "world_heritage">세계유산</option>
-        <option value = "world_feast">세계잔치</option>
-        <option value = "proverb">속담</option>
-        <option value = "sports">스포츠</option>
-        <option value = "food">음식</option>
-        <option value = "Character">인물</option>
-        <option value = "traditional_culture">전통문화</option>
-        <option value = "region">지역</option>
+        <option value="cook">요리</option>
+        <option value="traditional_culture">전통문화</option>
+        <option value="sports">스포츠</option>
+        <option value="world_feast">세계의 잔치</option>
+        <option value="proverb">속담</option>
+        <option value="region">지역</option>
+        <option value="world_heritage">세계유산</option>
+        <option value="country">나라</option>
+        <option value="health">건강</option>
+        <option value="Character">인물</option>
+        <option value="etc">기타</option>
     </select>
     <br>
-    <label for = "title">제목을 선택하세요</label>
-    <select id = "title" onchange="javascript:getAudioFile()">
+    <label for = "speechCode">문제 번호를 선택하세요</label>
+    <select id = "speechCode" onchange="javascript:changeFile()">
         <option>선택해주세요.</option>
     </select>
     <br>
     다음 이야기를 듣고 질문에 답해보세요.<br><br>
-    <p id = "context"> </p><br>
-    <audio controls id = "audio">
+    <p id = "speechContext"> </p><br>
+    <p id = "questionContext"> </p><br>
+    <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile()">
+    <audio controls id = "audio" hidden = true>
         <source src="" type="audio/wav">
     </audio>
+    <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext()">
     <br>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package kr.ac.dars.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,20 +20,28 @@ public class Function3Controller {
     @RequestMapping(value = "/Function3")
     public String home(Model model)
     {
-        // service.connect();
         return "Function3.html";
     }
 
-    @PostMapping(value = "/Function3/getAudioFile")
+    @PostMapping(value = "/Function3/getAudioInfo")
     @ResponseBody
-    public String getAudioFile(Function3Dto dto)
+    public List<Function3Dto> getAudioInfo(Function3Dto dto)
     {
-        return service.getAudioFile(dto);
+        System.out.println(service.connect());
+        return service.getAudioInfo(dto);
     }
 
     @PostMapping(value = "/Function3/disconnectSFTP")
     @ResponseBody
     public void disconnect(){
         service.disconnection();
+    }
+
+    @PostMapping(value = "/Function3/getAudioFile")
+    @ResponseBody
+    public String getAudioFile(Function3Dto dto)
+    {
+        System.out.println(dto);
+        return service.getAudioFile(dto);
     }
 }

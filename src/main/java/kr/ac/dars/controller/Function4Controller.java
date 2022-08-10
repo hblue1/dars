@@ -41,6 +41,6 @@ public class Function4Controller {
     @ResponseBody
     public String getAudioFile(Function4Dto dto)
     {   
-        return service.getAudioFile(dto.getIndex());
+        return service.getAudioFile(dto);
     }
 }

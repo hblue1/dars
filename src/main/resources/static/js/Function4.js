@@ -1,15 +1,6 @@
 $(document).ready(function(){
 })
 
-// $(window).on("beforeunload",function(){
-//     $.ajax({
-//         type: "POST",
-//         url: "/Function4/disconnectSFTP",
-//         success: function() {
-            
-//         }
-//     })
-// });
 function selectFile(select) {
     var sports = ["선택해주세요","A010","A020","A030","A040","A050","A060","A070","A080","A090","A100",
                   "A110","A120","A130","A140","A150","A160","A170","A180","A190","A200","A210","A220"];
