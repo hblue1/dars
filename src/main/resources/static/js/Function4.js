@@ -88,6 +88,7 @@ function shuffle(array) {
 }
 
 function getAudioFile() {
+    $("#audio").attr("src","");
     var data = {
         index : $("#num").val()
     }
@@ -105,5 +106,4 @@ function getAudioFile() {
 function playAudioFile() {
     var audio = document.getElementById("audio");
     audio.play();
-    
 }
