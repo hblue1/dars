@@ -1,6 +1,8 @@
 $(document).ready(function(){
-    var checkShow = false;
+    
 })
+
+var checkShow = false;
 
 function selectFile(select) {
     var cook = ["선택해주세요","J100","J200","J300","J400","J500"];

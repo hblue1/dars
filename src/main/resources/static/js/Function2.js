@@ -1,6 +1,8 @@
 $(document).ready(function(){
-    var checkShow = false;
+    
 })
+
+var checkShow = false;
 
 function changeFile() {
     $("#speechContext").hide();
