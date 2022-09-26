@@ -42,15 +42,168 @@
     </nav>
     <br><br><br>
     <br>
-    다음 문장을 듣고 따라해 보세요.<br><br>
-    <p id = "fixedQuestion">들은 문장을 확인해 보세요.</p><br>
-    <p id = "speechContext"> </p><br>
-    <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile()">
-    <audio controls id = "audio" hidden = true>
-        <source src="" type="audio/wav">
-    </audio>
-    <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext()">
-    <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()">
+    <p>
+        <audio controls id = "noise" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <button onclick="setVolume(1)">volume1</button><button onclick="setVolume(2)">volume2</button><button onclick="setVolume(3)">volume3</button><button onclick="setVolume(4)">volume4</button>
+    </p>
+    <p>
+        1. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion1">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext1"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(1)">
+        <audio controls id = "audio1" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(1)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(1)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
     <br>
+    <br>
+    <br>
+    <p>
+        2. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion2">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext2"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(2)">
+        <audio controls id = "audio2" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(2)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(2)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        3. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion3">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext3"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(3)">
+        <audio controls id = "audio3" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(3)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(3)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        4. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion4">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext4"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(4)">
+        <audio controls id = "audio4" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(4)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(4)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        5. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion5">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext5"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(5)">
+        <audio controls id = "audio5" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(5)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(5)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        6. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion6">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext6"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(6)">
+        <audio controls id = "audio6" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(6)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(6)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        7. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion7">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext7"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(7)">
+        <audio controls id = "audio7" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(7)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(7)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        8. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion8">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext8"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(8)">
+        <audio controls id = "audio8" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(8)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(8)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        9. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion9">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext9"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(9)">
+        <audio controls id = "audio9" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(9)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(9)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        10. 다음 문장을 듣고 따라해 보세요.<br><br>
+        <p id = "fixedQuestion10">들은 문장을 확인해 보세요.</p><br>
+        <p id = "speechContext10"> </p><br>
+        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(10)">
+        <audio controls id = "audio10" hidden = true>
+            <source src="" type="audio/wav">
+        </audio>
+        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(10)">
+        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(10)">
+        <!-- <img src = "/img/right.png" height = "50" width = "50" onclick = "javascript:changeFile()"> -->
+        <br>
+    </p>
 </body>
 </html>

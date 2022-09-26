@@ -31,6 +31,20 @@ public class Function1Service {
 
     public List<Function1Dto> getAudioInfo() {
         List<Function1Dto> result = dao.getAudioInfo();
+        String[] filename = new String[result.size()+1];
+        for(int i = 0; i < result.size(); i++){
+            filename[i] = result.get(i).getFilename();
+        }
+        filename[filename.length-1] = "noise";
+        List<String> file = getAudioFile(filename);
+        for(int i = 0; i < file.size()-1; i++){
+            result.get(i).setAudio(file.get(i));
+        }
+        Function1Dto noise = new Function1Dto();
+        noise.setFilename("noise");
+        noise.setContext(null);
+        noise.setAudio(file.get(file.size()-1));
+        result.add(noise);
         return result;
     }
 
@@ -65,9 +79,9 @@ public class Function1Service {
     }
 
     // 경로, 파일명, 파일을 받아 해당 경로에 파일을 파일명으로 저장한다.
-    public List<String> getAudioFile(String[] speechcode) {
+    public List<String> getAudioFile(String[] filename) {
         List<String> result = new ArrayList<String>();
-        String path = "Server/function2";
+        String path = "Server/function1";
         InputStream inputStream = null;
         try {
             // 경로를 / 구분
@@ -84,11 +98,12 @@ public class Function1Service {
             // for(String str : ftpClient.listNames()) {
             //     System.out.println("filename:"+str);
             // }
-            for(String str : speechcode) {
+            for(String str : filename) {
                 inputStream = ftpClient.retrieveFileStream(str+".wav");
                 byte[] fileArray = IOUtils.toByteArray(inputStream);
                 String b64string = new String(Base64.encodeBase64(fileArray));
                 result.add("data:audio/wav;base64, "+b64string);
+                while(!ftpClient.completePendingCommand());
             }
         } catch (IOException ex) {
             ex.printStackTrace();
