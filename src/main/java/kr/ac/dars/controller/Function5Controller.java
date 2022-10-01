@@ -24,7 +24,7 @@ public class Function5Controller {
     @ResponseBody
     public Function5Dto loadFile(Function5Dto dto)
     {
-        // System.out.println(service.connect());
+        System.out.println(service.connect());
         return service.loadFile(dto);
     }
 

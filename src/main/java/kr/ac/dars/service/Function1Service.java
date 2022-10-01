@@ -31,15 +31,18 @@ public class Function1Service {
 
     public List<Function1Dto> getAudioInfo() {
         List<Function1Dto> result = dao.getAudioInfo();
+
         String[] filename = new String[result.size()+1];
         for(int i = 0; i < result.size(); i++){
             filename[i] = result.get(i).getFilename();
         }
+
         filename[filename.length-1] = "noise";
         List<String> file = getAudioFile(filename);
         for(int i = 0; i < file.size()-1; i++){
             result.get(i).setAudio(file.get(i));
         }
+        
         Function1Dto noise = new Function1Dto();
         noise.setFilename("noise");
         noise.setContext(null);

@@ -1,5 +1,7 @@
 package kr.ac.dars.dto;
 
+import java.util.Map;
+
 import lombok.Data;
 
 @Data
@@ -11,4 +13,5 @@ public class Function5Dto {
     private String nullpoint;
     private String horizontal;
     private String vertical;
+    private Map<String,String> audio;
 }

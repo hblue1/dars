@@ -2,18 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.ac.dars.dao.Function5Dao">
 	<select id="loadFile" parameterType = "kr.ac.dars.dto.Function5Dto" resultType = "kr.ac.dars.dto.Function5Dto">
-            select
-                index,
-                col,
-                row,
-                cnt,
-                nullpoint,
-                horizontal,
-                vertical
-            from
-                function5
-            where
-                index = #{index}
-                ;
+        select
+            index,
+            col,
+            row,
+            cnt,
+            nullpoint,
+            horizontal,
+            vertical
+        from
+            function5
+        where
+            index = #{index}
+            ;
 	</select>
+    <select id = "getAudioList" parameterType = "kr.ac.dars.dto.Function5Dto" resultType = "String">
+        select
+            filename
+        from
+            function5_2
+        where
+            split_part(filename,'-',1) = cast(#{index} as TEXT)
+    </select>
 </mapper>
