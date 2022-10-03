@@ -65,19 +65,19 @@ function drawNumber(count,hrztArr,vtcArr) {
     var final = "";
     for(let i = 0; i < vtcArr.length; i++) {
         if (vtcArr[i][0] == count) {
-            final = ' style = "background-image:url(img/function5/blue' + vtcArr[i][1] + '.png)';
+            final = ' style = "background-image:url(/img/function5/blue' + vtcArr[i][1] + '.png)';
             break;
         }
     }
     for(let i = 0; i < hrztArr.length; i++) {
         if(final == "") {
             if (hrztArr[i][0] == count) {
-                final = ' style = "background-image:url(img/function5/red' + hrztArr[i][1] + '.png)';
+                final = ' style = "background-image:url(/img/function5/red' + hrztArr[i][1] + '.png)';
                 break;
             }
         }
         else if (hrztArr[i][0] == count) {
-            final += ', url(img/function5/red' + hrztArr[i][1] + '.png);';
+            final += ', url(/img/function5/red' + hrztArr[i][1] + '.png);';
             break;
         }
     }
