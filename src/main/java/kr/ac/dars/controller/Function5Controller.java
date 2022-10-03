@@ -27,10 +27,4 @@ public class Function5Controller {
         System.out.println(service.connect());
         return service.loadFile(dto);
     }
-
-    // @PostMapping(value = "/Function5/disconnectSFTP")
-    // @ResponseBody
-    // public void disconnect(){
-    //     service.disconnection();
-    // }
 }

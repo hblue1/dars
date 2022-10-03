@@ -31,12 +31,6 @@ public class Function3Controller {
         return service.getAudioInfo(dto);
     }
 
-    // @PostMapping(value = "/Function3/disconnectSFTP")
-    // @ResponseBody
-    // public void disconnect(){
-    //     service.disconnection();
-    // }
-
     @PostMapping(value = "/action/Function3/getAudioFile")
     @ResponseBody
     public String getAudioFile(Function3Dto dto)
