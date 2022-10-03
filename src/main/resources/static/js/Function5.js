@@ -13,7 +13,7 @@ function loadFile() {
     }
     $.ajax({
         type:"POST",
-        url:"/Function5/loadFile",
+        url:"/action/Function5/loadFile",
         data: data,
         success: function(result)
         {
