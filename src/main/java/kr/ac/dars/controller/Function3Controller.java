@@ -17,13 +17,13 @@ public class Function3Controller {
     @Autowired
     private Function3Service service;
 
-    @RequestMapping(value = "/Function3")
+    @RequestMapping(value = "/action/Function3")
     public String home(Model model)
     {
         return "Function3.html";
     }
 
-    @PostMapping(value = "/Function3/getAudioInfo")
+    @PostMapping(value = "/action/Function3/getAudioInfo")
     @ResponseBody
     public List<Function3Dto> getAudioInfo(Function3Dto dto)
     {
