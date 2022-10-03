@@ -14,13 +14,13 @@ import kr.ac.dars.service.Function5Service;
 public class Function5Controller {
     @Autowired
     private Function5Service service;
-    @RequestMapping(value = "/Function5")
+    @RequestMapping(value = "/action/Function5")
     public String home(Model model)
     {
         return "Function5.html";
     }
 
-    @PostMapping(value = "/Function5/loadFile")
+    @PostMapping(value = "/action/Function5/loadFile")
     @ResponseBody
     public Function5Dto loadFile(Function5Dto dto)
     {
@@ -28,9 +28,9 @@ public class Function5Controller {
         return service.loadFile(dto);
     }
 
-    @PostMapping(value = "/Function5/disconnectSFTP")
-    @ResponseBody
-    public void disconnect(){
-        service.disconnection();
-    }
+    // @PostMapping(value = "/Function5/disconnectSFTP")
+    // @ResponseBody
+    // public void disconnect(){
+    //     service.disconnection();
+    // }
 }

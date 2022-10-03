@@ -29,11 +29,11 @@ public class Function2Controller {
         return service.getAudioInfo(dto);
     }
 
-    @PostMapping(value = "/Function2/disconnectSFTP")
-    @ResponseBody
-    public void disconnect(){
-        service.disconnection();
-    }
+    // @PostMapping(value = "/Function2/disconnectSFTP")
+    // @ResponseBody
+    // public void disconnect(){
+    //     service.disconnection();
+    // }
 
     @PostMapping(value = "/Function2/getAudioFile")
     @ResponseBody

@@ -37,7 +37,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/","/login","/signUp").permitAll() // 누구나 접근 허용
+                .antMatchers("/","/login","/signUp","/action/**").permitAll() // 누구나 접근 허용
                 //나중에 user권한 관련 부분 추가
                 // .antMatchers("/").hasAuthority("USER") // USER, ADMIN만 접근 가능
                 .antMatchers("/admin").hasAuthority("ADMIN") // ADMIN만 접근 가능

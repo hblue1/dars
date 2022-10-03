@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.ajax({
         type:"POST",
-        url:"/Function1/getAudioInfo",
+        url:"/action/Function1/getAudioInfo",
         success: function(result)
         {
             console.log(result);
