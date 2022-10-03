@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class FunctionController {
+public class FunctionSelectController {
     @RequestMapping(value = "/FunctionSelect")
     public String home(Model model)
     {
