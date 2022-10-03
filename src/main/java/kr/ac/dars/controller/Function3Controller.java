@@ -17,13 +17,13 @@ public class Function3Controller {
     @Autowired
     private Function3Service service;
 
-    @RequestMapping(value = "/user/Function3")
+    @RequestMapping(value = "/Function3")
     public String home(Model model)
     {
         return "Function3.html";
     }
 
-    @PostMapping(value = "/user/Function3/getAudioInfo")
+    @PostMapping(value = "/Function3/getAudioInfo")
     @ResponseBody
     public List<Function3Dto> getAudioInfo(Function3Dto dto)
     {
@@ -31,13 +31,13 @@ public class Function3Controller {
         return service.getAudioInfo(dto);
     }
 
-    @PostMapping(value = "/user/Function3/disconnectSFTP")
+    @PostMapping(value = "/Function3/disconnectSFTP")
     @ResponseBody
     public void disconnect(){
         service.disconnection();
     }
 
-    @PostMapping(value = "/user/Function3/getAudioFile")
+    @PostMapping(value = "/Function3/getAudioFile")
     @ResponseBody
     public String getAudioFile(Function3Dto dto)
     {

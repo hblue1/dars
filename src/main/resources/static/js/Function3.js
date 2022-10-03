@@ -54,7 +54,7 @@ function changeFile() {
     }
     $.ajax({
         type:"POST",
-        url:"/user/Function3/getAudioInfo",
+        url:"/Function3/getAudioInfo",
         data:data,
         success: function(result)
         {
@@ -76,7 +76,7 @@ function getAudioFile() {
     }
     $.ajax({
         type:"POST",
-        url:"/user/Function3/getAudioFile",
+        url:"/Function3/getAudioFile",
         data:data,
         success:function(result)
         {
