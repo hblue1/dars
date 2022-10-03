@@ -44,9 +44,9 @@ public class SecurityConfig{
                 .antMatchers("/action/**").permitAll()
                 .anyRequest().authenticated() // 나머지 요청들은 권한의 종류에 상관 없이 권한이 있어야 접근 가능
                 .and()
-            .csrf()
-                .ignoringAntMatchers("/action/**")
-                .and()
+            // .csrf()
+            //     .ignoringAntMatchers("/action/**")
+            //     .and()
             .formLogin()
                 .permitAll()
                 .loginPage("/login") // 로그인 페이지 링크

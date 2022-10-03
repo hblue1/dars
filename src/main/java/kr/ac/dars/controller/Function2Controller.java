@@ -35,7 +35,7 @@ public class Function2Controller {
     //     service.disconnection();
     // }
 
-    @PostMapping(value = "/Function2/getAudioFile")
+    @PostMapping(value = "/action/Function2/getAudioFile")
     @ResponseBody
     public String getAudioFile(Function2Dto dto)
     {

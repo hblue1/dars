@@ -37,7 +37,7 @@ public class Function3Controller {
     //     service.disconnection();
     // }
 
-    @PostMapping(value = "/Function3/getAudioFile")
+    @PostMapping(value = "/action/Function3/getAudioFile")
     @ResponseBody
     public String getAudioFile(Function3Dto dto)
     {
