@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.ajax({
         type:"POST",
-        url:"/Function1/getAudioInfo",
+        url:"/user/Function1/getAudioInfo",
         success: function(result)
         {
             console.log(result);
@@ -82,13 +82,3 @@ function showContext(n) {
         checkShow = false;
     }
 }
-
-// function changeFile() {
-//     $("#speechContext").hide();
-//     $("#speechContext").text("");
-//     $("#audio").attr("src","");
-
-//     curruntIndex += 1;
-//     $("#speechContext").append(audioInfo[curruntIndex]);
-//     $("#audio").attr("src",audioData[curruntIndex]);
-// }

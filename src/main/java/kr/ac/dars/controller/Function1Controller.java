@@ -18,13 +18,13 @@ public class Function1Controller {
     @Autowired
     private Function1Service service;
 
-    @RequestMapping(value = "/Function1")
+    @RequestMapping(value = "/user/Function1")
     public String home(Model model)
     {
         return "Function1.html";
     }
 
-    @PostMapping(value = "/Function1/getAudioInfo")
+    @PostMapping(value = "/user/Function1/getAudioInfo")
     @ResponseBody
     public List<Function1Dto> getAudioInfo()
     {
@@ -32,7 +32,7 @@ public class Function1Controller {
         return service.getAudioInfo();
     }
 
-    @PostMapping(value = "/Function1/disconnectSFTP")
+    @PostMapping(value = "/user/Function1/disconnectSFTP")
     @ResponseBody
     public void disconnect(){
         service.disconnection();

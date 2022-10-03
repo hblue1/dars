@@ -16,7 +16,7 @@ function changeFile() {
     }
     $.ajax({
         type:"POST",
-        url:"/Function2/getAudioInfo",
+        url:"/user/Function2/getAudioInfo",
         data:data,
         success: function(result)
         {

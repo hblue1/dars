@@ -15,13 +15,13 @@ public class Function2Controller {
     @Autowired
     private Function2Service service;
     
-    @RequestMapping(value = "/Function2")
+    @RequestMapping(value = "/user/Function2")
     public String home(Model model)
     {
         return "Function2.html";
     }
 
-    @PostMapping(value = "/Function2/getAudioInfo")
+    @PostMapping(value = "/user/Function2/getAudioInfo")
     @ResponseBody
     public Function2Dto getAudioInfo(Function2Dto dto)
     {
@@ -29,13 +29,13 @@ public class Function2Controller {
         return service.getAudioInfo(dto);
     }
 
-    @PostMapping(value = "/Function2/disconnectSFTP")
+    @PostMapping(value = "/user/Function2/disconnectSFTP")
     @ResponseBody
     public void disconnect(){
         service.disconnection();
     }
 
-    @PostMapping(value = "/Function2/getAudioFile")
+    @PostMapping(value = "/user/Function2/getAudioFile")
     @ResponseBody
     public String getAudioFile(Function2Dto dto)
     {
