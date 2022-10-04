@@ -27,6 +27,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+    //이부분 수정
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 }
