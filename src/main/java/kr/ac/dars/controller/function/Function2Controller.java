@@ -18,7 +18,7 @@ public class Function2Controller {
     @RequestMapping(value = "/function/Function2")
     public String home(Model model)
     {
-        return "/function/Function2.html";
+        return "function/Function2.html";
     }
 
     @PostMapping(value = "/function/Function2/getAudioInfo")

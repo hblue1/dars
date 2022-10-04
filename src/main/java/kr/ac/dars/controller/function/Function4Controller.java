@@ -20,7 +20,7 @@ public class Function4Controller {
     @RequestMapping(value = "/function/Function4")
     public String home(Model model)
     {
-        return "/function/Function4.html";
+        return "function/Function4.html";
     }
 
     @PostMapping(value = "/function/Function4/getAudioInfo")

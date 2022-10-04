@@ -17,7 +17,7 @@ public class Function5Controller {
     @RequestMapping(value = "/function/Function5")
     public String home(Model model)
     {
-        return "/function/Function5.html";
+        return "function/Function5.html";
     }
 
     @PostMapping(value = "/function/Function5/loadFile")

@@ -20,7 +20,7 @@ public class Function3Controller {
     @RequestMapping(value = "/function/Function3")
     public String home(Model model)
     {
-        return "/function/Function3.html";
+        return "function/Function3.html";
     }
 
     @PostMapping(value = "/function/Function3/getAudioInfo")

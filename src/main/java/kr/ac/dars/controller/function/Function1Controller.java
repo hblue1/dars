@@ -20,7 +20,7 @@ public class Function1Controller {
     @RequestMapping(value = "/function/Function1")
     public String home(Model model)
     {
-        return "/function/Function1.html";
+        return "function/Function1.html";
     }
 
     @PostMapping(value = "/function/Function1/getAudioInfo")
@@ -29,5 +29,5 @@ public class Function1Controller {
     {
         System.out.println(service.connect());
         return service.getAudioInfo();
-    }
+    }   
 }
