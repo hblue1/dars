@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.dars.dao.function.Function1Dao">
+	<select id="getAudioInfo" resultType = "kr.ac.dars.dto.function.Function1Dto">
+        select
+            filename, context
+        from
+            function1
+        order by
+            random()
+        limit 10;
+	</select>
+</mapper>
