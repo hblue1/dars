@@ -1,4 +1,4 @@
-package kr.ac.dars.controller.security;
+package kr.ac.dars.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,7 +19,7 @@ public class LoginController {
 
     @GetMapping(value = "/login")
     public String login(HttpServletRequest request) {
-        return "/security/Login.html";
+        return "Login.html";
     }
 
     @GetMapping("/signUp")
