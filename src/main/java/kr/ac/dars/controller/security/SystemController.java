@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SystemController {
     @GetMapping("/system")
     public String system(HttpServletRequest request) {
-        return "/system/system.html";
+        return "system/system.html";
     }
 
     @GetMapping("/accessDenied")
 	public String accessDenied() {
-		return "/system/accessDenied.html";
+		return "system/accessDenied.html";
 	}
 }

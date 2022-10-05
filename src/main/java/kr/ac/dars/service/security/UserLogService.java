@@ -1,5 +1,7 @@
 package kr.ac.dars.service.security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,5 +17,9 @@ public class UserLogService {
 
     public void insertUserLog(UserLogDto dto) {
         dao.insertUserLog(dto);
+    }
+
+    public List<UserLogDto> getUserLog() {
+        return dao.getUserLog();
     }
 }
