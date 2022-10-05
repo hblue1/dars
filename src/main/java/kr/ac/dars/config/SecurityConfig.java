@@ -42,8 +42,8 @@ public class SecurityConfig{
             .authorizeRequests()
                 .antMatchers("/","/login","/signUp").permitAll() // 누구나 접근 허용
                 //나중에 user권한 관련 부분 추가
-                // .antMatchers("/function/**").hasRole(UserRole.USER.toString()) // USER, ADMIN만 접근 가능
-                // .antMatchers("/system/**").hasRole(UserRole.SYSTEM.toString()) // ADMIN만 접근 가능
+                .antMatchers("/function/**").hasRole(UserRole.USER.toString()) // USER, ADMIN만 접근 가능
+                .antMatchers("/system/**").hasRole(UserRole.SYSTEM.toString()) // ADMIN만 접근 가능
                 .anyRequest().authenticated() // 나머지 요청들은 권한의 종류에 상관 없이 권한이 있어야 접근 가능
                 .and()
             .csrf()
