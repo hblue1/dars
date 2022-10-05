@@ -14,7 +14,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Component
 public class UserLogComponet {
-    public String getIpAddr() {
+    public String getAccess_ip() {
 		String ip_addr = null;
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		HttpServletRequest request = sra.getRequest();
@@ -38,7 +38,7 @@ public class UserLogComponet {
 		return ip_addr;
 	}
 	
-	public String getTime() {
+	public String getAccess_Time() {
 		TimeZone zone = TimeZone.getTimeZone("Asia/Seoul");
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		format.setTimeZone(zone);
@@ -46,9 +46,15 @@ public class UserLogComponet {
 		return currentTime;
 	}
 
-	public String getMemberId(){
+	public String getAccess_Id(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-        UserDetails userDetails = (UserDetails)principal; 
+        UserDetails userDetails = (UserDetails)principal;
         return userDetails.getUsername();
 	}
+
+    public String getAccess_role() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+        UserDetails userDetails = (UserDetails)principal;
+        return userDetails.getAuthorities().toString();
+    }
 }

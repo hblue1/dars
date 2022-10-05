@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.dars.dao.security.UserLogDao">
+	<select id="insertUserLog" parameterType = "kr.ac.dars.dto.security.UserLogDto">
+        INSERT INTO
+            public.user_log
+        (
+            access_ip,
+            access_id,
+            access_time,
+            access_role
+        )
+            VALUES
+        (
+            #{access_ip},
+            #{access_id},
+            #{access_time},
+            #{access_id}
+        );
+	</select>
+</mapper>
