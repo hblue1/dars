@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/js/common/jquery-3.6.0.min.js"></script>
     <script src="/js/common/jquery-ui.min.js"></script>
-    <script src="/js/FunctionSelect.js"></script>
+    <script src="/js/home/FunctionSelect.js"></script>
     <script src="/js/common/bootstrap.js"></script>
     <script src="/js/common/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/common/bootstrap.css">
@@ -43,6 +43,25 @@
             </div>
         </div>
     </nav>
+    <div style="border: 1px solid;">
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <br>
+        <!--SYSTEM 역할을 갖는다면 이 글이 보임-->
+        <h3 sec:authorize="hasRole(T(kr.ac.dars.enums.security.UserRole).SYSTEM)">당신은 관리자입니다.</h3>
+        <!--USER 역할을 갖는다면 이 글이 보임-->
+        <h3 sec:authorize="hasRole(T(kr.ac.dars.enums.security.UserRole).USER)">당신은 사용자입니다.</h3>
+        <!--USER 역할을 갖는다면 이 글이 보임-->
+        <h3 sec:authorize="hasRole('BOARD')">보드를 볼 권한이 있습니다.</h3>
+        <!--어떤 역할이건 상관없이 인증이 되었다면 이 글이 보임-->
+        <h3 sec:authorize="isAuthenticated()">인증된 계정입니다.</h3>
+        <div>
+            Authorities : <span sec:authentication="principal.authorities"></span>
+        </div>
+        <br>
+        <p>
+            시스템 관리자 페이지로 이동 <a th:href="@{/system}">SYSTEM</a>
+        </p>
+    </div>
     <main>
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
@@ -149,26 +168,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- 여기에 권한 작성 -->
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <br>
-    
-        <!--SYSTEM 역할을 갖는다면 이 글이 보임-->
-        <h3 sec:authorize="hasRole(T(kr.ac.dars.enums.security.UserRole).SYSTEM)">당신은 관리자입니다.</h3>
-    
-        <!--USER 역할을 갖는다면 이 글이 보임-->
-        <h3 sec:authorize="hasRole(T(kr.ac.dars.enums.security.UserRole).USER)">당신은 사용자입니다.</h3>
-    
-        <!--USER 역할을 갖는다면 이 글이 보임-->
-        <h3 sec:authorize="hasRole('BOARD')">보드를 볼 권한이 있습니다.</h3>
-    
-        <!--어떤 역할이건 상관없이 인증이 되었다면 이 글이 보임-->
-        <h3 sec:authorize="isAuthenticated()">인증된 계정입니다.</h3>
-    
-        <div>
-            Authorities : <span sec:authentication="principal.authorities"></span>
         </div>
     </main>
 </body>

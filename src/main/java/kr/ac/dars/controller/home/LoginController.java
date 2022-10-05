@@ -1,4 +1,4 @@
-package kr.ac.dars.controller;
+package kr.ac.dars.controller.home;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,15 +17,15 @@ import lombok.AllArgsConstructor;
 public class LoginController {
     private final UserService userService;
 
-    @GetMapping(value = "/login")
+    @GetMapping(value = {"/","/login"})
     public String login(HttpServletRequest request) {
-        return "Login.html";
+        return "/home/Login.html";
     }
 
     @GetMapping("/signUp")
 	public String signUp(Model model) {
 		model.addAttribute("userDto", new UserDto());
-		return "signUp";
+		return "/home/signUp";
 	}
  
 	@PostMapping("/signUp")
