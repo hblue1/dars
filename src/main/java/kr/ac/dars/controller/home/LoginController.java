@@ -19,7 +19,7 @@ public class LoginController {
 
     @GetMapping(value = {"/","/login"})
     public String login(HttpServletRequest request) {
-        return "/home/Login.html";
+        return "home/Login.html";
     }
 
     @GetMapping("/signUp")
