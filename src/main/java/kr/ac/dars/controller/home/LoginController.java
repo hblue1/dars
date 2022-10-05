@@ -25,7 +25,7 @@ public class LoginController {
     @GetMapping("/signUp")
 	public String signUp(Model model) {
 		model.addAttribute("userDto", new UserDto());
-		return "/home/signUp";
+		return "home/signUp";
 	}
  
 	@PostMapping("/signUp")

@@ -18,6 +18,6 @@ public class FunctionSelectController {
         System.out.println(ci.getIpAddr());
         System.out.println(ci.getTime());
         System.out.println(ci.getMemberId());
-        return "/home/FunctionSelect.html";
+        return "home/FunctionSelect.html";
     }
 }
