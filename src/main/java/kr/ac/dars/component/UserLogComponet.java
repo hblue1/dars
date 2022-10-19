@@ -1,4 +1,4 @@
-package kr.ac.dars.config;
+package kr.ac.dars.component;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,6 +14,15 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Component
 public class UserLogComponet {
+    public String getAccess_URI() {
+        String uri = null;
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		HttpServletRequest request = sra.getRequest();
+        uri = request.getRequestURI();
+
+        return uri;
+    }
+
     public String getAccess_ip() {
 		String ip_addr = null;
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();

@@ -11,17 +11,18 @@
             horizontal,
             vertical
         from
-            function5
+            public.function5
         where
             index = #{index}
-            ;
+        ;
 	</select>
     <select id = "getAudioList" parameterType = "kr.ac.dars.dto.function.Function5Dto" resultType = "String">
         select
             filename
         from
-            function5_2
+            public.function5_2
         where
             split_part(filename,'-',1) = cast(#{index} as TEXT)
+        ;
     </select>
 </mapper>

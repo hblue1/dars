@@ -5,9 +5,10 @@
         select
             filename, context
         from
-            function1
+            public.function1
         order by
             random()
-        limit 10;
+        limit 10
+        ;
 	</select>
 </mapper>

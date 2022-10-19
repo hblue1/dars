@@ -5,9 +5,9 @@
         select
             f2.speechcontext, f1.questioncontext 
         from
-            function3_2 f2
+            public.function3_2 f2
         left join
-            function3_1 f1
+            public.function3_1 f1
         on
             f2.speechcode = f1.speechcode
         where

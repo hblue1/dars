@@ -1,4 +1,4 @@
-package kr.ac.dars.controller.security;
+package kr.ac.dars.controller.system;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SystemController {
     @GetMapping("/system")
     public String system(HttpServletRequest request) {
-        return "system/system.html";
+        return "system/System.html";
     }
 
-    @GetMapping("/accessDenied")
+    @GetMapping("/AccessDenied")
 	public String accessDenied() {
-		return "system/accessDenied.html";
+		return "system/AccessDenied.html";
 	}
 }

@@ -9,17 +9,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.dars.component.UserLogComponet;
 import kr.ac.dars.dto.function.Function4Dto;
+import kr.ac.dars.dto.system.UserLogDto;
 import kr.ac.dars.service.function.Function4Service;
+import kr.ac.dars.service.system.UserLogService;
 
 @Controller
 public class Function4Controller {
+    @Autowired
+    private UserLogComponet userLogComponent;
+
+    @Autowired
+    private UserLogService userLogService;
+    
     @Autowired
     private Function4Service service;
 
     @RequestMapping(value = "/function/Function4")
     public String home(Model model)
     {
+        UserLogDto dto = new UserLogDto(
+                                    userLogComponent.getAccess_Id(),
+                                    userLogComponent.getAccess_ip(),
+                                    userLogComponent.getAccess_Time(),
+                                    userLogComponent.getAccess_role(),
+                                    userLogComponent.getAccess_URI());
+        userLogService.insertUserLog(dto);
         return "function/Function4.html";
     }
 

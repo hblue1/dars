@@ -64,7 +64,7 @@ public class SecurityConfig{
                 .clearAuthentication(true)
                 .and()
             .exceptionHandling()
-                .accessDeniedPage("/accessDenied")
+                .accessDeniedPage("/AccessDenied")
                 .and()
             .sessionManagement()
                 .maximumSessions(1) //최대 세션 개수지정

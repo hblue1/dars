@@ -1,4 +1,4 @@
-package kr.ac.dars.service.security;
+package kr.ac.dars.service.system;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.ac.dars.dao.security.UserLogDao;
-import kr.ac.dars.dto.security.UserLogDto;
+import kr.ac.dars.dao.system.UserLogDao;
+import kr.ac.dars.dto.system.UserLogDto;
 
 @Service
 @Transactional

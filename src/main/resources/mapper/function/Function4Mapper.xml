@@ -6,9 +6,9 @@
             filename,
 			context
 		FROM
-			function4
+			public.function4
 		WHERE
 			index = #{index}
-			;
+        ;
 	</select>
 </mapper>

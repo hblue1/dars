@@ -1,4 +1,4 @@
-package kr.ac.dars.dto.security;
+package kr.ac.dars.dto.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,4 +10,5 @@ public class UserLogDto {
     private String access_ip;
     private String access_time;
     private String access_role;
+    private String access_uri;
 }
