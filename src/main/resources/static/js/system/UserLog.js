@@ -14,7 +14,8 @@ $(document).ready(function(){
             {title:"사용자 ID", field:"access_id",width:200},
             {title:"접속 시간", field:"access_time", hozAlign:"right", align:"left",width:200},
             {title:"접속 IP", field:"access_ip",width:150},
-            {title:"사용자 권한", field:"access_role",width:350}
+            {title:"접속 경로", field:"access_uri",width:250},
+            {title:"사용자 권한", field:"access_role",width:350},
         ],
     });
     $.ajax({
