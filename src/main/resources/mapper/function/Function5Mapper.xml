@@ -22,7 +22,8 @@
         from
             public.function5_2
         where
-            split_part(filename,'-',1) = cast(#{index} as TEXT)
+            split_part(filename,'-',1) = cast(#{index} as TEXT) and
+            context != 'null'
         ;
     </select>
 </mapper>
