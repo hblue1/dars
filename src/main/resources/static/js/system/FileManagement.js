@@ -8,7 +8,7 @@ $(document).ready(function(){
         pagination:"local",
         paginationSize:21,
         initialSort:[
-            {column:"file_path",dir: "desc"}
+            {column:"file_path",dir: "asc"}
         ],
         columns:[
             {title:"파일 이름", field:"name",width:200},
