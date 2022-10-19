@@ -33,7 +33,6 @@ public class Function5Service {
 
     public Function5Dto loadFile(Function5Dto dto) {
         Function5Dto result = dao.loadFile(dto);
-
         Map<String,String> temp = new HashMap<>();
         List<String> audioName = dao.getAudioList(dto);
         List<String> audioFile = getAudioFile(dao.getAudioList(dto));
@@ -42,6 +41,7 @@ public class Function5Service {
         }
         result.setAudio(temp);
         result.setCnt(audioName.size() / 4);
+        System.out.println(result);
 
         return result;
     }
