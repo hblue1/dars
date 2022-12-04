@@ -1,0 +1,14 @@
+package kr.ac.dars.controller.function;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class Function1DController {
+    @RequestMapping(value = "/function/Function1D")
+    public String home(Model model)
+    {
+        return "function/Function1D.html";
+    }
+}

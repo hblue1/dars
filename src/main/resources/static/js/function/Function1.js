@@ -1,45 +1,65 @@
 $(document).ready(function(){
+    const searchParams = new URLSearchParams(location.search);
+
+    setVolume(searchParams.get('d'));
     $.ajax({
         type:"POST",
         url:"/function/Function1/getAudioInfo",
         success: function(result)
         {
-            console.log(result);
+            // console.log(result);
             $("#noise").attr("src",result[10].audio);
-            $("#audio1").attr("src",result[0].audio);
-            $("#audio2").attr("src",result[1].audio);
-            $("#audio3").attr("src",result[2].audio);
-            $("#audio4").attr("src",result[3].audio);
-            $("#audio5").attr("src",result[4].audio);
-            $("#audio6").attr("src",result[5].audio);
-            $("#audio7").attr("src",result[6].audio);
-            $("#audio8").attr("src",result[7].audio);
-            $("#audio9").attr("src",result[8].audio);
-            $("#audio10").attr("src",result[9].audio);
-            
-            for(var i = 1; i < result.length; i++){
-                var name = "speechContext" + i;
-                document.getElementById(name).style.display = "none";
+            $("#audio").attr("src",result[0].audio);
+            $("#answer").text(result[0].context);
+            for(var i = 1; i < 10; i++) {
+                audioData[i] = result[i].audio;
+                audioInfo[i] = result[i].context;
             }
-
-            $("#speechContext1").append(result[0].context);
-            $("#speechContext2").append(result[1].context);
-            $("#speechContext3").append(result[2].context);
-            $("#speechContext4").append(result[3].context);
-            $("#speechContext5").append(result[4].context);
-            $("#speechContext6").append(result[5].context);
-            $("#speechContext7").append(result[6].context);
-            $("#speechContext8").append(result[7].context);
-            $("#speechContext9").append(result[8].context);
-            $("#speechContext10").append(result[9].context);
+            
+            // for(var i = 1; i < result.length; i++){
+            //     var name = "speechContext" + i;
+            //     document.getElementById(name).style.display = "none";
+            // }
         }
     })
+
+    // const content = document.getElementsByClassName('content_wrap sub');
+    // var n = 0;
+    // var contentArr = '<div class="correct_wrap"' + ' name="no' + n +'">';
+    // contentArr +=       '<div class="play flexac">'
+    // +                       '<img src="/img/play.png" alt="재생하기">'
+    // +                       '<p>재생하기</p>'
+    // +                       '<audio controls id = "noise' + n + '" hidden = true>'
+    // +                           '<source src="" type="audio/wav">'
+    // +                       '</audio>'
+    // +                   '</div>'
+    // +                   '<nav class="footer_menu">'
+    // +                       '<nav class="drop-down-menu flexac">'
+    // +                           '<input type="checkbox" class="activate" id="accordion-2" name="accordion-2">'
+    // +                           '<label for="accordion-2" class="menu-title flexac">'
+    // +                           '<div class="wrap flexac"><img src="/img/chk.png" alt="확인하기"><span>들은문장 확인하기</span></div>'
+    // +                           '<div class="correct flexac"><span>정답보기</span><img src="/img/look.svg" alt=">"></div></label>'
+    // +                           '<div class="drop-down">'
+    // +                           '<a href="#" ><img src="/img/play.png" alt="확인하기"><span name="answer' + n + '">테니스는 라켓 스포츠의 한 종류입니다.</span></a>'
+    // +                           '</div>'
+    // +                       '</nav>'
+    // +                   '</nav>'
+    // +                '</div>'
+    // ;
+    // content.append();
 })
 
 var checkShow = false;
 var audioInfo = [];
 var audioData = [];
 var curruntIndex = 0;
+
+function changeFile() {
+    pauseAudioFile();
+    curruntIndex += 1;
+    $("#answer").text(audioInfo[curruntIndex]);
+    $("#audio").attr("src",audioData[curruntIndex]);
+}
 
 function setVolume(n) {
     if(n == 1) {
@@ -56,39 +76,30 @@ function setVolume(n) {
     }
 }
 
-function playAudioFile(n) {
-    var name = "audio"+n
+function playAudioFile() {
+    var name = "audio"
     document.getElementById(name).play();
     document.getElementById(name).addEventListener("ended", function(){ document.getElementById("noise").pause() })
     document.getElementById("noise").play();
 }
 
-function pauseAudioFile(n) {
-    var name = "audio"+n
+function pauseAudioFile() {
+    var name = "audio"
     document.getElementById(name).pause();
     document.getElementById("noise").pause();
     document.getElementById(name).currentTime=0;
     document.getElementById("noise").currentTime=0;
 }
 
-function showContext(n) {
-    var name = "speechContext"+n
-    if(!checkShow) {
-        document.getElementById(name).style.display = '';
-        checkShow = true;
-    }
-    else {
-        document.getElementById(name).style.display = 'none';
-        checkShow = false;
-    }
-}
-
-// function changeFile() {
-//     $("#speechContext").hide();
-//     $("#speechContext").text("");
-//     $("#audio").attr("src","");
-
-//     curruntIndex += 1;
-//     $("#speechContext").append(audioInfo[curruntIndex]);
-//     $("#audio").attr("src",audioData[curruntIndex]);
+// function showContext(n) {
+//     var name = "speechContext"+n
+//     if(!checkShow) {
+//         document.getElementById(name).style.display = '';
+//         checkShow = true;
+//     }
+//     else {
+//         document.getElementById(name).style.display = 'none';
+//         checkShow = false;
+//     }
 // }
+
