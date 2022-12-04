@@ -14,7 +14,7 @@ $(document).ready(function(){
             for(var i = 1; i < 10; i++) {
                 audioData[i] = result[i].audio;
                 audioInfo[i] = result[i].context;
-            }
+            } 
             
             // for(var i = 1; i < result.length; i++){
             //     var name = "speechContext" + i;
