@@ -1,20 +1,20 @@
 $(document).ready(function(){
     const searchParams = new URLSearchParams(location.search);
 
-    setVolume(searchParams.get('d'));
+    setNoise(searchParams.get('d'));
     $.ajax({
         type:"POST",
         url:"/function/Function1/getAudioInfo",
         success: function(result)
         {
-            // console.log(result);
+            console.log(result);
             $("#noise").attr("src",result[10].audio);
             $("#audio").attr("src",result[0].audio);
             $("#answer").text(result[0].context);
             for(var i = 1; i < 10; i++) {
                 audioData[i] = result[i].audio;
                 audioInfo[i] = result[i].context;
-            } 
+            }
             
             // for(var i = 1; i < result.length; i++){
             //     var name = "speechContext" + i;
@@ -61,7 +61,7 @@ function changeFile() {
     $("#audio").attr("src",audioData[curruntIndex]);
 }
 
-function setVolume(n) {
+function setNoise(n) {
     if(n == 1) {
         document.getElementById("noise").volume = 0;
     }
