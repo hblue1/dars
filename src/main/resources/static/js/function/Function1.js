@@ -1,7 +1,7 @@
 $(document).ready(function(){
     const searchParams = new URLSearchParams(location.search);
-
     setNoise(searchParams.get('d'));
+    
     $.ajax({
         type:"POST",
         url:"/function/Function1/getAudioInfo",
@@ -15,15 +15,8 @@ $(document).ready(function(){
                 audioData[i] = result[i].audio;
                 audioInfo[i] = result[i].context;
             }
-            
-            // for(var i = 1; i < result.length; i++){
-            //     var name = "speechContext" + i;
-            //     document.getElementById(name).style.display = "none";
-            // }
         }
     })
-
-    // const content = document.getElementsByClassName('content_wrap sub');
     // var n = 0;
     // var contentArr = '<div class="correct_wrap"' + ' name="no' + n +'">';
     // contentArr +=       '<div class="play flexac">'
@@ -90,16 +83,3 @@ function pauseAudioFile() {
     document.getElementById(name).currentTime=0;
     document.getElementById("noise").currentTime=0;
 }
-
-// function showContext(n) {
-//     var name = "speechContext"+n
-//     if(!checkShow) {
-//         document.getElementById(name).style.display = '';
-//         checkShow = true;
-//     }
-//     else {
-//         document.getElementById(name).style.display = 'none';
-//         checkShow = false;
-//     }
-// }
-
