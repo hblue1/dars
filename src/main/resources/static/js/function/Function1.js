@@ -1,7 +1,6 @@
 $(document).ready(function(){
-    const searchParams = new URLSearchParams(location.search);
-    setNoise(searchParams.get('d'));
-    
+    getNoise();
+
     $.ajax({
         type:"POST",
         url:"/function/Function1/getAudioInfo",
@@ -47,11 +46,9 @@ var audioInfo = [];
 var audioData = [];
 var curruntIndex = 0;
 
-function changeFile() {
-    pauseAudioFile();
-    curruntIndex += 1;
-    $("#answer").text(audioInfo[curruntIndex]);
-    $("#audio").attr("src",audioData[curruntIndex]);
+function getNoise() {
+    const searchParams = new URLSearchParams(location.search);
+    setNoise(searchParams.get('d'));
 }
 
 function setNoise(n) {
@@ -70,16 +67,29 @@ function setNoise(n) {
 }
 
 function playAudioFile() {
-    var name = "audio"
+    var name = "audio";
     document.getElementById(name).play();
     document.getElementById(name).addEventListener("ended", function(){ document.getElementById("noise").pause() })
     document.getElementById("noise").play();
 }
 
 function pauseAudioFile() {
-    var name = "audio"
+    var name = "audio";
     document.getElementById(name).pause();
     document.getElementById("noise").pause();
     document.getElementById(name).currentTime=0;
     document.getElementById("noise").currentTime=0;
+}
+
+function replayAudioFile() {
+    pauseAudioFile();
+    playAudioFile();
+}
+
+function changeFile() {
+    pauseAudioFile();
+    getNoise();
+    curruntIndex += 1;
+    $("#answer").text(audioInfo[curruntIndex]);
+    $("#audio").attr("src",audioData[curruntIndex]);
 }
