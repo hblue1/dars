@@ -7,7 +7,8 @@
         from
             public.function2
         where
-            substring(questioncode::varchar,0,3) = 'AA'
+            substring(questioncode::varchar,0,3) != 'AA'
+        <!-- limit 52 -->
         ;
     </select>
     <select id="getAudioInfo2" parameterType = "kr.ac.dars.dto.function.Function2Dto" resultType = "kr.ac.dars.dto.function.Function2Dto">
@@ -16,7 +17,7 @@
         from
             public.function2
         where
-            substring(questioncode::varchar,0,3) != 'AA'
+            substring(questioncode::varchar,0,3) = 'AA'
         ;
     </select>
 </mapper>

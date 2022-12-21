@@ -65,7 +65,10 @@
                     <img src="/img/function/play.png" alt="재생하기">
                     <p>재생하기</p>
                     <p id = "speechcontext"></p>
-                    <audio controls id = "audio" hidden = true>
+                    <audio controls id = "saudio" hidden = true>
+                        <source src="" type="audio/wav">
+                    </audio>
+                    <audio controls id = "qaudio" hidden = true>
                         <source src="" type="audio/wav">
                     </audio>
                 </div>
@@ -73,7 +76,7 @@
                     <nav class="drop-down-menu flexac">
                         <input type="checkbox" class="activate" id="accordion-2" name="accordion-2">
                         <label for="accordion-2" class="menu-title flexac">
-                        <div class="wrap flexac"><img src="/img/function/chk.png" alt="확인하기"><span id = "questioncontext">정답은 무엇입니까?</span></div>
+                        <div class="wrap flexac"><img src="/img/function/chk.png" alt="확인하기"><span>정답은 무엇입니까?</span></div>
                         <div class="correct flexac"><span>정답보기</span><img src="/img/function/look.svg" alt=">"></div></label>
                         <div class="drop-down">
                         <!-- <input type="text" class="" name="searchKeyword" id="searchKeyword" title="검색어를 입력하세요"
@@ -86,21 +89,4 @@
         </div>
     </div>
 </body>
-
-    
-
-
-    <!-- <input type = "text" id = "speechCode">
-    <button onclick="javascript:changeFile()">문제 조회</button>
-    <br>
-    다음 문장과 질문을 듣고 답해 보세요.<br><br>
-    <p id = "speechContext"> </p><br>
-    <p id = "questionContext"> </p><br>
-    <p id = "fixedQuestion">정답은 무엇입니까?</p><br>
-    <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile()">
-    <audio controls id = "audio" hidden = true>
-        <source src="" type="audio/wav">
-    </audio>
-    <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext()">
-    <br> -->
 </html>

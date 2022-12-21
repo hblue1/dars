@@ -1,7 +1,7 @@
 var speechcontext = [];
-var questioncontext = [];
 var answer = [];
-var audioData = [];
+var saudioData = [];
+var qaudioData = [];
 var checkShow = false;
 var curruntIndex = 0;
 
@@ -16,16 +16,16 @@ $(document).ready(function(){
         data:data,
         success: function(result)
         {
-            console.log(result);
-            $("#speechcontext").text(result[0].speechcontext);
-            $("#questioncontext").text(result[0].questioncontext);
+            // console.log(result);
+            $("#speechcontext").text(result[0].speechcontext + '\n' + result[0].questioncontext);
             $("#answer").text(result[0].answer);
-            $("#audio").attr("src",result[0].audio);
-            for(var i = 1; i < 10; i++) {
-                speechcontext[i] = result[i].speechcontext;
-                questioncontext[i] = result[i].questioncontext;
+            $("#saudio").attr("src",result[0].saudio);
+            $("#qaudio").attr("src",result[0].qaudio);
+            for(var i = 1; i < result.length; i++) {
+                speechcontext[i] = result[i].speechcontext + '\n' + result[i].questioncontext;
                 answer[i] = result[i].answer;
-                audioData[i] = result[i].audio;
+                saudioData[i] = result[i].saudio;
+                qaudioData[i] = result[i].qaudio;
             }
         }
     })
@@ -83,14 +83,18 @@ function getLevel() {
 }
 
 function playAudioFile() {
-    var name = "audio";
+    var name = "saudio";
     document.getElementById(name).play();
+    document.getElementById(name).addEventListener("ended", function(){ document.getElementById("qaudio").play(); });
 }
 
 function pauseAudioFile() {
-    var name = "audio";
+    var name = "saudio";
+    var name2 = "qaudio";
     document.getElementById(name).pause();
     document.getElementById(name).currentTime=0;
+    document.getElementById(name2).pause();
+    document.getElementById(name2).currentTime=0;
 }
 
 function replayAudioFile() {
@@ -110,8 +114,8 @@ function showContext() {
 function changeFile() {
     pauseAudioFile();
     curruntIndex += 1;
-    $("#speechcontext").text(speechcontext[speechcontext]);
-    $("#questioncontext").text(questioncontext[questioncontext]);
+    $("#speechcontext").text(speechcontext[curruntIndex]);
     $("#answer").text(answer[curruntIndex]);
-    $("#audio").attr("src",audioData[curruntIndex]);
+    $("#saudio").attr("src",saudioData[curruntIndex]);
+    $("#qaudio").attr("src",qaudioData[curruntIndex]);
 }
