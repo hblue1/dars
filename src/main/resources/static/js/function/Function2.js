@@ -17,11 +17,10 @@ $(document).ready(function(){
         success: function(result)
         {
             // console.log(result);
-            $("#speechcontext").text(result[0].speechcontext + '\n' + result[0].questioncontext);
             $("#answer").text(result[0].answer);
             $("#saudio").attr("src",result[0].saudio);
             $("#qaudio").attr("src",result[0].qaudio);
-            for(var i = 1; i < result.length; i++) {
+            for(var i = 0; i < result.length; i++) {
                 speechcontext[i] = result[i].speechcontext + '\n' + result[i].questioncontext;
                 answer[i] = result[i].answer;
                 saudioData[i] = result[i].saudio;
@@ -104,17 +103,19 @@ function replayAudioFile() {
 
 function showContext() {
     if(!checkShow) {
-        $("#speechContext").show();
+        $("#speechcontext").text(speechcontext[curruntIndex]);
+        checkShow = true;
     }
     else {
-        $("#speechContext").hide();
+        $("#speechContext").text("재생하기");
+        checkShow = false;
     }
 }
 
 function changeFile() {
     pauseAudioFile();
     curruntIndex += 1;
-    $("#speechcontext").text(speechcontext[curruntIndex]);
+    
     $("#answer").text(answer[curruntIndex]);
     $("#saudio").attr("src",saudioData[curruntIndex]);
     $("#qaudio").attr("src",qaudioData[curruntIndex]);
