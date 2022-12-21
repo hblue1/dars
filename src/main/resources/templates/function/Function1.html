@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://webfontworld.github.io/SCoreDream/SCoreDream.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,16 +15,13 @@
     <script src="/js/common/jquery-3.6.0.min.js"></script>
     <script src="/js/common/jquery-ui.min.js"></script>
     <script src="/js/function/Function1.js"></script>
-    <title>청각검사플랫폼</title>
-    
+    <title>소음 하 문장듣기</title>
 </head>
-
 <body>
-
     <div class="platform_wrap">
         <div class="top flexac">
             <div class="left flexac">
-                <div class="logo">청각검사플랫폼</div>
+                <div class="logo">청각인지훈련플랫폼</div>
                 <div class="nav_wrap">
                     <ul class="flexac">
                         <li><a href="#" class="active">HOME</a></li>
@@ -59,15 +54,14 @@
                     <h3>다음 문장을 듣고 따라해 보세요.</h3>
                 </div>
                 <div class="right">
-                    <a href="javascript:replayAudioFile()"><img src="/img/bnt_1.png" alt="다시듣기"></a>
-                    <a href="javascript:setNoise(1)"><img src="/img/bnt_2.png" alt="소음없이듣기"></a>
-                        <a href="javascript:changeFile()"><img src="/img/bnt_3.png" alt="다음문장듣기"></a>
+                    <a href="javascript:replayAudioFile()"><img src="/img/function/bnt_1.png" alt="다시듣기"></a>
+                    <a href="javascript:setNoise(1)"><img src="/img/function/bnt_2.png" alt="소음없이듣기"></a>
+                    <a href="javascript:changeFile()"><img src="/img/function/bnt_3.png" alt="다음문장듣기"></a>
                 </div>
             </div>
-            <!-- 여기서부터 -->
             <div class="correct_wrap">
                 <div class="play flexac" onclick="playAudioFile()">
-                    <img src="/img/play.png" alt="재생하기">
+                    <img src="/img/function/play.png" alt="재생하기">
                     <p>재생하기</p>
                     <audio controls id = "noise" hidden = true>
                         <source src="" type="audio/wav">
@@ -79,222 +73,16 @@
                 <nav class="footer_menu">
                     <nav class="drop-down-menu flexac">
                         <input type="checkbox" class="activate" id="accordion-2" name="accordion-2">
-                        
                         <label for="accordion-2" class="menu-title flexac">
-                        <div class="wrap flexac"><img src="/img/chk.png" alt="확인하기"><span>들은문장 확인하기</span></div>
-                        <div class="correct flexac"><span>정답보기</span><img src="/img/look.svg" alt=">"></div></label>
+                        <div class="wrap flexac"><img src="/img/function/chk.png" alt="확인하기"><span>들은문장 확인하기</span></div>
+                        <div class="correct flexac"><span>정답보기</span><img src="/img/function/look.svg" alt=">"></div></label>
                         <div class="drop-down">
-                        <a href="#" ><img src="/img/play.png" alt="확인하기"><span id = "answer">테니스는 라켓 스포츠의 한 종류입니다.</span></a>
+                        <a href="#" ><img src="/img/function/play.png" alt="확인하기" style="height:100%"><span id = "answer"></span></a>
                         </div>
                     </nav>
                 </nav>
             </div>
-            <!-- 여기까지 복제할것 -->
         </div>
     </div>
 </body>
-
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/common/jquery-3.6.0.min.js"></script>
-    <script src="/js/common/jquery-ui.min.js"></script>
-    <script src="/js/function/Function1.js"></script>
-    <script src="/js/common/bootstrap.js"></script>
-    <script src="/js/common/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/common/bootstrap.css">
-    <link rel="stylesheet" href="/css/common/bootstrap.min.css">
-    <title>소음 하 문장듣기</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">청각 검사 플랫폼</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out" />
-                </form>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <br><br><br>
-    <br>
-    <p>
-        <audio controls id = "noise" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <button onclick="setVolume(1)">volume1</button><button onclick="setVolume(2)">volume2</button><button onclick="setVolume(3)">volume3</button><button onclick="setVolume(4)">volume4</button>
-    </p>
-    <p>
-        1. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion1">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext1"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(1)">
-        <audio controls id = "audio1" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(1)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(1)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        2. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion2">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext2"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(2)">
-        <audio controls id = "audio2" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(2)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(2)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        3. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion3">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext3"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(3)">
-        <audio controls id = "audio3" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(3)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(3)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        4. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion4">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext4"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(4)">
-        <audio controls id = "audio4" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(4)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(4)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        5. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion5">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext5"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(5)">
-        <audio controls id = "audio5" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(5)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(5)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        6. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion6">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext6"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(6)">
-        <audio controls id = "audio6" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(6)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(6)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        7. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion7">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext7"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(7)">
-        <audio controls id = "audio7" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(7)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(7)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        8. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion8">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext8"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(8)">
-        <audio controls id = "audio8" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(8)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(8)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        9. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion9">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext9"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(9)">
-        <audio controls id = "audio9" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(9)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(9)">
-        <br>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p>
-        10. 다음 문장을 듣고 따라해 보세요.<br><br>
-        <p id = "fixedQuestion10">들은 문장을 확인해 보세요.</p><br>
-        <p id = "speechContext10"> </p><br>
-        <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile(10)">
-        <audio controls id = "audio10" hidden = true>
-            <source src="" type="audio/wav">
-        </audio>
-        <img src = "/img/pause.png" height = "50" width = "50" onclick = "javascript:pauseAudioFile(10)">
-        <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext(10)">
-        <br>
-    </p>
-</body>
-</html> -->

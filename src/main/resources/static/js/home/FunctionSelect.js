@@ -11,15 +11,15 @@ function Function1(){
 }
 
 function Function2(){
-    window.location.href="/function/Function2";
+    window.location.href="/function/Function2D";
 }
 
 function Function3(){
-    window.location.href="/function/Function3";
+    window.location.href="/function/Function3D";
 }
 
 function Function4(){
-    window.location.href="/function/Function4";
+    window.location.href="/function/Function4D";
 }
 
 function Function5(){

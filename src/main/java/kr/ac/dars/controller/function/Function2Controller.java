@@ -1,5 +1,7 @@
 package kr.ac.dars.controller.function;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,16 +42,16 @@ public class Function2Controller {
 
     @PostMapping(value = "/function/Function2/getAudioInfo")
     @ResponseBody
-    public Function2Dto getAudioInfo(Function2Dto dto)
+    public List<Function2Dto> getAudioInfo(int level)
     {
         System.out.println(service.connect());
-        return service.getAudioInfo(dto);
+        return service.getAudioInfo(level);
     }
 
-    @PostMapping(value = "/function/Function2/getAudioFile")
-    @ResponseBody
-    public String getAudioFile(Function2Dto dto)
-    {
-        return service.getAudioFile(dto);
-    }
+    // @PostMapping(value = "/function/Function2/getAudioFile")
+    // @ResponseBody
+    // public String getAudioFile(Function2Dto dto)
+    // {
+    //     return service.getAudioFile(dto);
+    // }
 }

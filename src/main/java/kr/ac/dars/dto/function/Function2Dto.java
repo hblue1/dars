@@ -8,4 +8,6 @@ public class Function2Dto {
     private String speechcontext;
     private String questioncode;
     private String questioncontext;
+    private String answer;
+    private String audio;
 }

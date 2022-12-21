@@ -2,6 +2,7 @@ package kr.ac.dars.service.function;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTP;
@@ -26,11 +27,6 @@ public class Function2Service {
     private Function2Dao dao;
 
     FTPClient ftpClient = null;
-
-    public Function2Dto getAudioInfo(Function2Dto dto) {
-        Function2Dto result = dao.getAudioInfo(dto);
-        return result;
-    }
 
     public String connect() {
         String result = "connection failed";
@@ -62,9 +58,19 @@ public class Function2Service {
         }
     }
 
+    public List<Function2Dto> getAudioInfo(int level) {
+        List<Function2Dto> result;
+        if (level == 1)
+            result = dao.getAudioInfo1();
+        else
+            result = dao.getAudioInfo2();
+
+        return getAudioFile(result);
+    }
+
     // 경로, 파일명, 파일을 받아 해당 경로에 파일을 파일명으로 저장한다.
 
-    public String getAudioFile(Function2Dto dto) {
+    public List<Function2Dto> getAudioFile(List<Function2Dto> dto) {
         String result = "";
         String path = "Server/function2";
         InputStream inputStream = null;
@@ -83,10 +89,13 @@ public class Function2Service {
             // for(String str : ftpClient.listNames()) {
             //     System.out.println("filename:"+str);
             // }
-            inputStream = ftpClient.retrieveFileStream(dto.getSpeechcode()+".wav");
-            byte[] fileArray = IOUtils.toByteArray(inputStream);
-            String b64string = new String(Base64.encodeBase64(fileArray));
-            result = "data:audio/wav;base64, "+b64string;
+            for(int i = 0; i < dto.size(); i++) {
+                inputStream = ftpClient.retrieveFileStream(dto.get(i).getSpeechcode()+".wav");
+                byte[] fileArray = IOUtils.toByteArray(inputStream);
+                String b64string = new String(Base64.encodeBase64(fileArray));
+                result = "data:audio/wav;base64, "+b64string;
+                dto.get(i).setAudio(result);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -99,6 +108,6 @@ public class Function2Service {
             }
             disconnection();
         }
-        return result;
+        return dto;
     }
 }

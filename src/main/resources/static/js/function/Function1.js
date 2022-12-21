@@ -1,3 +1,7 @@
+var audioInfo = [];
+var audioData = [];
+var curruntIndex = 0;
+
 $(document).ready(function(){
     getNoise();
 
@@ -6,7 +10,7 @@ $(document).ready(function(){
         url:"/function/Function1/getAudioInfo",
         success: function(result)
         {
-            console.log(result);
+            // console.log(result);
             $("#noise").attr("src",result[10].audio);
             $("#audio").attr("src",result[0].audio);
             $("#answer").text(result[0].context);
@@ -40,11 +44,6 @@ $(document).ready(function(){
     // ;
     // content.append();
 })
-
-var checkShow = false;
-var audioInfo = [];
-var audioData = [];
-var curruntIndex = 0;
 
 function getNoise() {
     const searchParams = new URLSearchParams(location.search);
@@ -83,6 +82,7 @@ function pauseAudioFile() {
 
 function replayAudioFile() {
     pauseAudioFile();
+    getNoise();
     playAudioFile();
 }
 
