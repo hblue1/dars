@@ -2,6 +2,7 @@ package kr.ac.dars.service.function;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -60,18 +61,24 @@ public class Function2Service {
 
     public List<Function2Dto> getAudioInfo(int level) {
         List<Function2Dto> result;
+        List<Function2Dto> audioList;
         if (level == 1)
             result = dao.getAudioInfo1();
         else
             result = dao.getAudioInfo2();
 
-        return getAudioFile(result);
+        audioList = getAudioFile(result);
+        for(int i = 0; i < result.size(); i++) {
+            result.get(i).setSaudio(audioList.get(i).getSaudio());
+            result.get(i).setQaudio(audioList.get(i).getQaudio());
+        }
+        return result;
     }
 
     // 경로, 파일명, 파일을 받아 해당 경로에 파일을 파일명으로 저장한다.
 
     public List<Function2Dto> getAudioFile(List<Function2Dto> dto) {
-        String result = "";
+        List<Function2Dto> result = new ArrayList<>();
         String path = "Server/function2";
         InputStream inputStream = null;
         try {
@@ -86,15 +93,20 @@ public class Function2Service {
                     }
                 }
             }
-            // for(String str : ftpClient.listNames()) {
-            //     System.out.println("filename:"+str);
-            // }
-            for(int i = 0; i < dto.size(); i++) {
-                inputStream = ftpClient.retrieveFileStream(dto.get(i).getSpeechcode()+".wav");
+            for(Function2Dto dt : dto) {
+                System.out.println(dt.getSpeechcode()+".wav");
+                inputStream = ftpClient.retrieveFileStream(dt.getSpeechcode()+".wav");
                 byte[] fileArray = IOUtils.toByteArray(inputStream);
                 String b64string = new String(Base64.encodeBase64(fileArray));
-                result = "data:audio/wav;base64, "+b64string;
-                dto.get(i).setAudio(result);
+                dt.setSaudio("data:audio/wav;base64, "+b64string);
+
+                System.out.println(dt.getQuestioncode()+".wav");
+                inputStream = ftpClient.retrieveFileStream(dt.getQuestioncode()+".wav");
+                fileArray = IOUtils.toByteArray(inputStream);
+                b64string = new String(Base64.encodeBase64(fileArray));
+                dt.setQaudio("data:audio/wav;base64, "+b64string);
+
+                result.add(dt);
                 while(!ftpClient.completePendingCommand());
             }
         } catch (IOException ex) {
@@ -109,6 +121,9 @@ public class Function2Service {
             }
             disconnection();
         }
-        return dto;
+
+        System.out.println(result.get(0));
+
+        return result;
     }
 }
