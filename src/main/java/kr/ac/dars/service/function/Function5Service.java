@@ -66,7 +66,7 @@ public class Function5Service {
                 byte[] fileArray = IOUtils.toByteArray(inputStream);
                 String b64string = new String(Base64.encodeBase64(fileArray));
                 result.add("data:audio/wav;base64, "+b64string);
-                while(!ftpClient.completePendingCommand());
+                // while(!ftpClient.completePendingCommand());
             }
         } catch (IOException ex) {
             ex.printStackTrace();
