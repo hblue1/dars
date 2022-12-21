@@ -95,6 +95,7 @@ public class Function2Service {
                 String b64string = new String(Base64.encodeBase64(fileArray));
                 result = "data:audio/wav;base64, "+b64string;
                 dto.get(i).setAudio(result);
+                while(!ftpClient.completePendingCommand());
             }
         } catch (IOException ex) {
             ex.printStackTrace();
