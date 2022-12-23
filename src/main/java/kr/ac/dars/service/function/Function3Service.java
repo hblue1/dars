@@ -28,11 +28,7 @@ public class Function3Service {
 
     FTPClient ftpClient = null;
 
-    public List<Function3Dto> getAudioInfo(Function3Dto dto) {
-        List<Function3Dto> result = dao.getAudioInfo(dto);
-        return result;
-    }
-    
+   
     public String connect() {
         String result = "connection failed";
         try{
@@ -63,10 +59,16 @@ public class Function3Service {
         }
     }
 
+    public List<Function3Dto> getAudioInfo(char category) {
+        List<Function3Dto> result = dao.getAudioInfo(category);
+        result = getAudioFile(result);
+        return result;
+    }
+
     // 경로, 파일명, 파일을 받아 해당 경로에 파일을 파일명으로 저장한다.
 
-    public String getAudioFile(Function3Dto dto) {
-        String result = "";
+    public List<Function3Dto> getAudioFile(List<Function3Dto> dto) {
+        String audio = "";
         String path = "Server/function3";
         InputStream inputStream = null;
         try {
@@ -81,13 +83,15 @@ public class Function3Service {
                     }
                 }
             }
-            // for(String str : ftpClient.listNames()) {
-            //     System.out.println("filename:"+str);
-            // }
-            inputStream = ftpClient.retrieveFileStream(dto.getSpeechcode()+".wav");
-            byte[] fileArray = IOUtils.toByteArray(inputStream);
-            String b64string = new String(Base64.encodeBase64(fileArray));
-            result = "data:audio/wav;base64, "+b64string;
+            for(int i = 0; i < dto.size(); i++) {
+                inputStream = ftpClient.retrieveFileStream(dto.get(i).getSpeechcode()+".wav");
+                byte[] fileArray = IOUtils.toByteArray(inputStream);
+                String b64string = new String(Base64.encodeBase64(fileArray));
+                audio = "data:audio/wav;base64, "+b64string;
+                dto.get(i).setAudio(audio);
+
+                while(!ftpClient.completePendingCommand());
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -100,6 +104,6 @@ public class Function3Service {
             }
             disconnection();
         }
-        return result;
+        return dto;
     }
 }

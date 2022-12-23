@@ -4,57 +4,146 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://webfontworld.github.io/SCoreDream/SCoreDream.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/main/common.css">
+    <link rel="stylesheet" href="/css/main/layout.css">
+    <!-- 이부분 html 레이아웃으로 다시 만들 것 -->
     <script src="/js/common/jquery-3.6.0.min.js"></script>
     <script src="/js/common/jquery-ui.min.js"></script>
     <script src="/js/function/Function5.js"></script>
-    <script src="/js/common/bootstrap.js"></script>
-    <script src="/js/common/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/common/bootstrap.css">
-    <link rel="stylesheet" href="/css/common/bootstrap.min.css">
-    <title>Document</title>
-    <style>
-        input{
-            width:100px;
-            height:100px;
-        }
-    </style>
+    <title>가로세로퀴즈</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">청각 검사 플랫폼</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <div class="platform_wrap">
+        <div class="top flexac">
+            <div class="left flexac">
+                <div class="logo">청각인지훈련플랫폼</div>
+                <div class="nav_wrap">
+                    <ul class="flexac">
+                        <li><a href="#" class="active">HOME</a></li>
+                        <li><a href="#">LINK</a></li>
+                        <li><a href="#">DISABLED</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right">
+                <ul class="flexac">
+                    <li>
+                        <div class="search-box">
+                            <input type="text" class="text" name="searchKeyword" id="searchKeyword" title="검색어를 입력하세요"
+                                placeholder="검색어를 입력하세요" autocomplete="off">
+                            <button type="submit" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><input type="submit" value="로그아웃" class="btn_global"></li>
+                    </form>
+                    <li><img src="/img/home/user.png" alt="유저"></li>
                 </ul>
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out" />
-                </form>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
-    </nav>
-    <br><br><br>
-    <label for = "index">문제 번호를 입력하세요</label>
-    <input type = "number" id = "index">
-    <button onclick="javascript:loadFile()">문제 조회</button>
-    <br>
-    <div id = "quiz">
+        <div class="content_wrap sub id4">
+            <div class="text sub1 flex">
+                <div class="left">
+                    <div class="wrap flexac">
+                        <h1>05</h1>
+                        <h2>가로세로 퀴즈</h2>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="javascript:loadFile()"><img src="/img/function/bnt_5.png" alt="정답보기"></a>
+                </div>
+            </div>
+            <div class="qz_wrap" id = "quiz">
+                <!-- <div class="qz_left" id = "board">
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                        <div class="qz_nb blue">1</div>
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                        <div class="qz_nb">2</div>
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                    </div>
+                    
+                    <div class="qz_wrap">
+                        <div class="box"></div>
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                    </div>
+                    <div class="qz_wrap">
+                        <div class="box"></div>
+                    </div>
+                    <div class="qz_wrap">
+                        <div class="box"></div>
+                    </div>
+                    <div class="qz_wrap">
+                        <div class="box"></div>
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                        <div class="qz_nb">3</div>
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                        <div class="qz_nb blue">4</div>
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                    </div>
+                    <div class="qz_wrap">
+                        <input type="text" class="qz" id="searchKeyword">
+                    </div>
+                </div> -->
+                <!-- <div class="qz_right">
+                    <table>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Level 1</th>
+                            <th scope="col">Level 2</th>
+                            <th scope="col">Level 3</th>
+                            <th scope="col">정답</th>
+                            <th scope="col">조회수</th> : 밀려난 셀 제거
+                        </tr>
+                        <tr>
+                            <td class="blue">1번</br>힌트</td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_2.png" alt="재생"></a></td>
+                        </tr>
+                        <tr>
+                            <td>2번</br>힌트</td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_2.png" alt="재생"></a></td>
+                        </tr>
+                        <tr>
+                            <td>3번</br>힌트</td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_2.png" alt="재생"></a></td>
+                        </tr>
+                        <tr>
+                            <td class="blue">4번</br> 힌트</td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_1.png" alt="재생"></a></td>
+                            <td><a href=""><img src="/img/function/play_2.png" alt="재생"></a></td>
+                        </tr>
+                 </table>
+                </div> -->
+            </div> 
+        </div>
     </div>
 </body>
 </html>

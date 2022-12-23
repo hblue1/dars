@@ -1,100 +1,120 @@
-$(document).ready(function(){
-    
-})
-
+var speechcontext = [];
+var questioncontext = [];
+var answer = [];
+var audioData = [];
+var questionArray;
 var checkShow = false;
+var curruntIndex = 0;
+var startIndex = 0;
 
-function selectFile(select) {
-    var cook = ["선택해주세요","J100","J200","J300","J400","J500"];
-    var traditional_culture = ["선택해주세요","K100","K200","K300","K400","K500"];
-    var sports = ["선택해주세요","L100","L200","L300","L400","L500"];
-    var world_feast = ["선택해주세요","M100","M200","M300","M400","M500"];
-    var proverb = ["선택해주세요","N100","N200","N300","N400","N500"];
-    var region = ["선택해주세요","O100","O200","O300","O400","O500"];
-    var world_heritage = ["선택해주세요","P100","P200","P300","P400","P500"];
-    var country = ["선택해주세요","Q100","Q200","Q300","Q400","Q500"];
-    var health = ["선택해주세요","R100","R200","R300","R400","R500"];
-    var Character = ["선택해주세요","S100","S200","S300","S400","S500"];
-    var etc = ["선택해주세요","T100","T200","T300","T400","T500"];
-
-    var target = document.getElementById("speechCode");
-
-    if(select.value == "cook") var code = cook;
-    else if(select.value == "traditional_culture") var code = traditional_culture;
-    else if(select.value == "sports") var code = sports;
-    else if(select.value == "world_feast") var code = world_feast;
-    else if(select.value == "proverb") var code = proverb;
-    else if(select.value == "region") var code = region;
-    else if(select.value == "world_heritage") var code = world_heritage;
-    else if(select.value == "country") var code = country;
-    else if(select.value == "health") var code = health;
-    else if(select.value == "Character") var code = Character;
-    else if(select.value == "etc") var code = etc;
-
-    target.options.length = 0;
-
-    for(var i in code)
-    {
-        var opt = document.createElement("option");
-        opt.value = code[i];
-        opt.innerHTML = code[i];
-        target.appendChild(opt);
-    }
-}
-
-function changeFile() {
-    $("#speechContext").hide();
-    $("#speechContext").text("");
-    $("#questionContext").text("");
-    if($("#speechCode").val() == "선택해주세요") {
-        return 0;
-    }
-    var data = {
-        speechcode : $("#speechCode").val()
-    }
+$(document).ready(function(){
+    data = {
+        category : getCategory()
+    };
+    
     $.ajax({
         type:"POST",
         url:"/function/Function3/getAudioInfo",
         data:data,
         success: function(result)
         {
-            getAudioFile();
-            $("#speechContext").append(result[0].speechcontext);
-            var context = "";
             for(var i = 0; i < result.length; i++) {
-                context += (i+1) + ". " + result[i].questioncontext + "<br>";
+                speechcontext[i] = result[i].speechcontext;
+                questioncontext[i] = result[i].questioncontext;
+                answer[i] = result[i].answer;
+                audioData[i] = result[i].audio;
             }
-            $("#questionContext").append(context);
+            getQuestionArray();
+
+            $("#speechcontext").text(result[0].speechcontext);
+            $("#answer").text(result[0].answer);
+            $("#audio").attr("src",result[0].audio);
+            setQuestionContext();
+            playAudioFile();
         }
     })
+})
+
+function getCategory() {
+    const searchParams = new URLSearchParams(location.search);
+    return searchParams.get('d');
 }
 
-function getAudioFile() {
-    $("#audio").attr("src","");
-    var data = {
-        speechcode : $("#speechCode").val()
-    }
-    $.ajax({
-        type:"POST",
-        url:"/function/Function3/getAudioFile",
-        data:data,
-        success:function(result)
-        {
-            $("#audio").attr("src",result);
+function getQuestionArray() {
+    var count = 1;
+    var qArr = [];
+    for(var i = 0; i < speechcontext.length; i++) {
+        if (speechcontext[i] == speechcontext[i+1]) {
+            count++;
         }
-    })
+        else if ((speechcontext[i] != speechcontext[i+1]) || (i+1 == result.length)){
+            qArr.push(count);
+            count = 1;
+        }
+    }
+
+    questionArray = qArr;
+}
+
+function setQuestionContext() {
+    var context = "<div class='bottom_box' id = 'qc'>";
+    for(var i = startIndex; i < startIndex+questionArray[curruntIndex]; i++) {
+        context
+        += "<ul>"
+        +       "<li>?</li>"
+        +       "<li>" + questioncontext[i] +"</li>"
+        +  "</ul>"
+        ;
+    }
+    context += "</div>";
+    $("#questioncontext").append(context);
+}
+
+function playAudioFile() {
+    var name = "audio";
+    document.getElementById(name).play();
+}
+
+function pauseAudioFile() {
+    var name = "audio";
+    document.getElementById(name).pause();
+    document.getElementById(name).currentTime=0;
+}
+
+function replayAudioFile() {
+    pauseAudioFile();
+    playAudioFile();
 }
 
 function showContext() {
     if(!checkShow) {
-        $("#speechContext").show();
+        $("#speechcontext").show();
+        checkShow = true;
     }
     else {
-        $("#speechContext").hide();
+        $("#speechcontext").hide();
+        checkShow = false;
     }
 }
 
-function playAudioFile() {
-    $('#audio').get(0).load();
-    $('#audio').get(0).play();
+function changeFile() {
+    pauseAudioFile();
+    curruntIndex += 1;
+    if(curruntIndex >= questionArray.length) {
+        alert("모두 끝났습니다.")
+        return;
+    }
+    startIndex += questionArray[curruntIndex];
+    console.log(startIndex);
+    
+
+    $("#speechcontext").text(speechcontext[startIndex+1]);
+    $("#answer").text(answer[startIndex+1]);
+    $("#audio").attr("src",audioData[startIndex+1]);
+    $("#qc").remove();
+    setQuestionContext();
+
+    playAudioFile();
+    checkShow = true;
+    showContext();
 }

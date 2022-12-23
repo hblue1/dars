@@ -10,5 +10,5 @@ import kr.ac.dars.dto.function.Function3Dto;
 @Repository
 @Mapper
 public interface Function3Dao {
-    public List<Function3Dto> getAudioInfo(Function3Dto dto);
+    public List<Function3Dto> getAudioInfo(char category);
 }

@@ -4,75 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://webfontworld.github.io/SCoreDream/SCoreDream.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/main/common.css">
+    <link rel="stylesheet" href="/css/main/layout.css">
+    <!-- 이부분 html 레이아웃으로 다시 만들 것 -->
     <script src="/js/common/jquery-3.6.0.min.js"></script>
     <script src="/js/common/jquery-ui.min.js"></script>
     <script src="/js/function/Function3.js"></script>
-    <script src="/js/common/bootstrap.js"></script>
-    <script src="/js/common/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/common/bootstrap.css">
-    <link rel="stylesheet" href="/css/common/bootstrap.min.css">
     <title>긴 이야기 듣기</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">청각 검사 플랫폼</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <div class="platform_wrap">
+        <div class="top flexac">
+            <div class="left flexac">
+                <div class="logo">청각인지훈련플랫폼</div>
+                <div class="nav_wrap">
+                    <ul class="flexac">
+                        <li><a href="#" class="active">HOME</a></li>
+                        <li><a href="#">LINK</a></li>
+                        <li><a href="#">DISABLED</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right">
+                <ul class="flexac">
+                    <li>
+                        <div class="search-box">
+                            <input type="text" class="text" name="searchKeyword" id="searchKeyword" title="검색어를 입력하세요"
+                                placeholder="검색어를 입력하세요" autocomplete="off">
+                            <button type="submit" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><input type="submit" value="로그아웃" class="btn_global"></li>
+                    </form>
+                    <li><img src="/img/home/user.png" alt="유저"></li>
                 </ul>
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out" />
-                </form>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
-    </nav>
-    <br><br><br>
-    <label for="topic">주제를 선택하세요</label>
-    <select id="topic" onchange="javascript:selectFile(this)">
-        <option>선택해주세요.</option>
-        <option value="cook">요리</option>
-        <option value="traditional_culture">전통문화</option>
-        <option value="sports">스포츠</option>
-        <option value="world_feast">세계의 잔치</option>
-        <option value="proverb">속담</option>
-        <option value="region">지역</option>
-        <option value="world_heritage">세계유산</option>
-        <option value="country">나라</option>
-        <option value="health">건강</option>
-        <option value="Character">인물</option>
-        <option value="etc">기타</option>
-    </select>
-    <br>
-    <label for = "speechCode">문제 번호를 선택하세요</label>
-    <select id = "speechCode" onchange="javascript:changeFile()">
-        <option>선택해주세요.</option>
-    </select>
-    <br>
-    다음 이야기를 듣고 질문에 답해보세요.<br><br>
-    <p id = "speechContext"> </p><br>
-    <p id = "questionContext"> </p><br>
-    <img src = "/img/start.png" height="50" width="50" onclick = "javascript:playAudioFile()">
-    <audio controls id = "audio" hidden = true>
-        <source src="" type="audio/wav">
-    </audio>
-    <img src = "/img/text.png" height = "50" width = "50" onclick = "javascript:showContext()">
-    <br>
+        <div class="content_wrap sub id3">
+            <div class="text sub1 flex">
+                <div class="left">
+                    <div class="wrap flexac">
+                        <h1>03</h1>
+                        <h2>긴 이야기 듣기</h2>
+                    </div>
+                    <h3 class="bk">다음 문장과 질문을 듣고 답해 보세요.</h3>
+                </div>
+                <div class="right">
+                    <a href="javascript:replayAudioFile()"><img src="/img/function/bnt_1.png" alt="다시듣기"></a>
+                    <a href="javascript:showContext()"><img src="/img/function/bnt_4.png" alt="문장보기"></a>
+                    <a href="javascript:changeFile()"><img src="/img/function/bnt_3.png" alt="다음문장듣기"></a>
+                </div>
+            </div>
+            <div class="correct_wrap">
+                <audio controls id = "audio" hidden = true>
+                    <source src="" type="audio/wav">
+                </audio>
+                <div class="long_box" id = "questioncontext">
+                    <div id = "speechcontext" style = "font-size:0.75em" hidden = true></div>
+                    <div class="top_text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

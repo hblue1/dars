@@ -42,16 +42,9 @@ public class Function3Controller {
 
     @PostMapping(value = "/function/Function3/getAudioInfo")
     @ResponseBody
-    public List<Function3Dto> getAudioInfo(Function3Dto dto)
+    public List<Function3Dto> getAudioInfo(char category)
     {
         System.out.println(service.connect());
-        return service.getAudioInfo(dto);
-    }
-
-    @PostMapping(value = "/function/Function3/getAudioFile")
-    @ResponseBody
-    public String getAudioFile(Function3Dto dto)
-    {
-        return service.getAudioFile(dto);
+        return service.getAudioInfo(category);
     }
 }

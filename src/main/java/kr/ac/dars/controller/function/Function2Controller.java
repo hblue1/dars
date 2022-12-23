@@ -47,11 +47,4 @@ public class Function2Controller {
         System.out.println(service.connect());
         return service.getAudioInfo(level);
     }
-
-    // @PostMapping(value = "/function/Function2/getAudioFile")
-    // @ResponseBody
-    // public String getAudioFile(Function2Dto dto)
-    // {
-    //     return service.getAudioFile(dto);
-    // }
 }

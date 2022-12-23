@@ -39,7 +39,9 @@
                             <button type="submit" class="btn-search"><span class="blind">검색</span></button>
                         </div>
                     </li>
-                    <li><input type="button" value="로그아웃" class="btn_global"></li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><input type="submit" value="로그아웃" class="btn_global"></li>
+                    </form>
                     <li><img src="/img/home/user.png" alt="유저"></li>
                 </ul>
             </div>
@@ -51,57 +53,57 @@
             </div>
             <div class="list_wrap2 flex">
               <ul>
-                <a href="javascript:Category(1)">
+                <a href="javascript:Category('J')">
                     <li>요리</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(2)">
+                <a href="javascript:Category('K')">
                     <li>전통문화</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(3)">
+                <a href="javascript:Category('L')">
                     <li>스포츠</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(4)">
+                <a href="javascript:Category('M')">
                     <li class="mr0">세계의 잔치</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(5)">
+                <a href="javascript:Category('N')">
                     <li>속담</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(6)">
+                <a href="javascript:Category('O')">
                     <li>지역</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(7)">
+                <a href="javascript:Category('P')">
                     <li>세계유산</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(8)">
+                <a href="javascript:Category('Q')">
                     <li class="mr0">나라</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(9)">
+                <a href="javascript:Category('R')">
                     <li class="mb0">건강</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(10)">
+                <a href="javascript:Category('S')">
                     <li class="mb0">인물</li>
                 </a>
               </ul>
               <ul>
-                <a href="javascript:Category(11)">
+                <a href="javascript:Category('T')">
                     <li class="mb0">기타</li>
                 </a>
               </ul>

@@ -29,52 +29,6 @@ $(document).ready(function(){
         }
     })
 })
-////////////////////////////////////////////////////////////
-// function changeFile() {
-//     $("#speechContext").hide();
-//     $("#speechContext").text("");
-//     $("#questionContext").text("");
-//     if($("#speechCode").val() == "") {
-//         return 0;
-//     }
-//     var data = {
-//         speechcode : $("#speechCode").val()
-//     }
-//     $.ajax({
-//         type:"POST",
-//         url:"/function/Function2/getAudioInfo",
-//         data:data,
-//         success: function(result)
-//         {
-//             console.log(result.speechcontext);
-//             console.log(result.questioncontext);
-//             getAudioFile();
-//             $("#speechContext").append(result.speechcontext);
-//             var context = result.questioncontext + "<br>";
-//             $("#questionContext").append(context);
-//         }
-//     })
-//     .always(function(){
-//         $("#speechCode").val("");
-//     })
-// }
-
-// function getAudioFile() {
-//     $("#audio").attr("src","");
-//     var data = {
-//         speechcode : $("#speechCode").val()
-//     }
-//     $.ajax({
-//         type:"POST",
-//         url:"/function/Function2/getAudioFile",
-//         data:data,
-//         success:function(result)
-//         {
-//             $("#audio").attr("src",result);
-//         }
-//     })
-// }
-////////////////////////////////////////////////////////////
 
 function getLevel() {
     const searchParams = new URLSearchParams(location.search);
@@ -107,7 +61,7 @@ function showContext() {
         checkShow = true;
     }
     else {
-        $("#speechContext").text("재생하기");
+        $("#speechcontext").text("재생하기");
         checkShow = false;
     }
 }
@@ -115,7 +69,6 @@ function showContext() {
 function changeFile() {
     pauseAudioFile();
     curruntIndex += 1;
-    
     $("#answer").text(answer[curruntIndex]);
     $("#saudio").attr("src",saudioData[curruntIndex]);
     $("#qaudio").attr("src",qaudioData[curruntIndex]);

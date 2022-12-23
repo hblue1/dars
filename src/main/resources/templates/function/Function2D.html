@@ -39,7 +39,9 @@
                             <button type="submit" class="btn-search"><span class="blind">검색</span></button>
                         </div>
                     </li>
-                    <li><input type="button" value="로그아웃" class="btn_global"></li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><input type="submit" value="로그아웃" class="btn_global"></li>
+                    </form>
                     <li><img src="/img/home/user.png" alt="유저"></li>
                 </ul>
             </div>

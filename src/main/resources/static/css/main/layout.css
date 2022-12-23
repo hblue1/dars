@@ -629,8 +629,12 @@ text-decoration: none;
 }
 .qz_left .qz_wrap{
     /* width: 33.3%; */
-    height: 125px;
+    /* height: 100px; */
+    height: 100%;
     position: relative;
+}
+.qz_table td{
+    
 }
 .qz_left .qz_wrap .box{
     background-color: #63A4DB;
@@ -650,16 +654,20 @@ text-decoration: none;
     text-align: center;
 }
 .qz_left .qz_wrap .qz_nb{
-   position: absolute;
-   top: 10px;
-   left: 10px;
-   font-family: 'Montserrat';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'Montserrat';
     font-weight: 800;
     font-size: 30px;
     color:#74CCBB;
+    flex: 1;
+    margin: 0px 15%;
 }
 .qz_left .qz_wrap .qz_nb.blue{
-     color:#63A4DB;
+    color:#63A4DB;
+    flex: 1;
+    margin: 0px 0%;
 }
 
 .qz_right{
