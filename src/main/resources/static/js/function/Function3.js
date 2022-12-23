@@ -105,8 +105,7 @@ function changeFile() {
         return;
     }
     startIndex += questionArray[curruntIndex];
-    console.log(startIndex);
-    
+    // console.log(startIndex);
 
     $("#speechcontext").text(speechcontext[startIndex+1]);
     $("#answer").text(answer[startIndex+1]);
