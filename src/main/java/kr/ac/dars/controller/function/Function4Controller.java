@@ -39,18 +39,18 @@ public class Function4Controller {
         return "function/Function4.html";
     }
 
-    @PostMapping(value = "/function/Function4/getAudioInfo")
+    @PostMapping(value = "/function/Function4/getFirstInfo")
     @ResponseBody
-    public List<Function4Dto> getAudioInfo(Function4Dto dto)
+    public List<Function4Dto> getFirstInfo(int level)
     {
-        System.out.println(service.connect());
-        return service.getAudioInfo(dto);
+        return service.getFirstInfo(level);
     }
 
-    @PostMapping(value = "/function/Function4/getAudioFile")
+    @PostMapping(value = "/function/Function4/getAudioInfo")
     @ResponseBody
-    public String getAudioFile(Function4Dto dto)
+    public List<String> getAudioInfo(String index)
     {   
-        return service.getAudioFile(dto);
+        System.out.println(service.connect());
+        return service.getAudioInfo(index);
     }
 }

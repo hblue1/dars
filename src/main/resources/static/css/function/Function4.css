@@ -1,0 +1,29 @@
+.Plus_gnb{
+    padding-left: 0;
+}
+.correct_wrap .long_box .play_wrap .Plus_gnb li{
+    margin-left: 0;
+    vertical-align: middle;
+}
+.long_box_plus_page{
+    height: 492px;
+}
+.correct_wrap .plus_page_input{
+    font-family: 'Montserrat', sans-serif;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #81a8b7;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #eef6f9;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+.correct_wrap .plus_page_input:focus{
+    outline: none;
+}
+.correct_wrap .plus_page_input:placeholder-shown{
+    border-color: red;
+}

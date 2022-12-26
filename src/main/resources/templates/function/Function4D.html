@@ -24,9 +24,9 @@
                 <div class="logo">청각인지훈련플랫폼</div>
                 <div class="nav_wrap">
                     <ul class="flex">
-                        <li><a href="#" class="active">HOME</a></li>
+                        <li><a href="/home/FunctionSelect" class="active">HOME</a></li>
                         <li><a href="#">LINK</a></li>
-                        <li><a href="#">DISABLED</a></li>
+                        <!-- <li><a href="#">DISABLED</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -39,7 +39,9 @@
                             <button type="submit" class="btn-search"><span class="blind">검색</span></button>
                         </div>
                     </li>
-                    <li><input type="button" value="로그아웃" class="btn_global"></li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><input type="submit" value="로그아웃" class="btn_global"></li>
+                    </form>
                     <li><img src="/img/home/user.png" alt="유저"></li>
                 </ul>
             </div>
@@ -52,40 +54,40 @@
             <div class="list_wrap1 flex">
                 <ul>
                     <li>
-                        <a href="javascript:Level(1)" class="flex">
+                        <a href="javascript:Level(3)" class="flex">
                             <p class="num">3문장 세트</p>
                             <p class="sup">문장 세개를
                                 </br> 순서에 맞게 선택
                             </p>
                         </a>
                     </li>
-                    <a href="javascript:Level(1)">
+                    <a href="javascript:Level(3)">
                     <li class="flex"><p>이동하기</p><img class="on" src="/img/function/move_arrow.svg" alt="이동"><img src="/img/function/move_arrow_off.svg" alt="이동"></li>
                     </a>
                 </ul>
                 <ul>
                     <li>
-                        <a href="javascript:Level(2)" class="flex">
+                        <a href="javascript:Level(4)" class="flex">
                             <p class="num">4문장 세트</p>
                             <p class="sup">문장 네개를
                                 </br> 순서에 맞게 선택
                             </p>
                         </a>
                     </li>
-                    <a href="javascript:Level(2)">
+                    <a href="javascript:Level(4)">
                     <li class="flex"><p>이동하기</p><img class="on" src="/img/function/move_arrow.svg" alt="이동"><img src="/img/function/move_arrow_off.svg" alt="이동"></li>
                     </a>
                 </ul>
                 <ul>
                     <li>
-                        <a href="javascript:Level(3)" class="flex">
+                        <a href="javascript:Level(5)" class="flex">
                             <p class="num">5문장 세트</p>
                             <p class="sup">문장 다섯개를
                                 </br> 순서에 맞게 선택
                             </p>
                         </a>
                     </li>
-                    <a href="javascript:Level(3)">
+                    <a href="javascript:Level(5)">
                     <li class="flex"><p>이동하기</p><img class="on" src="/img/function/move_arrow.svg" alt="이동"><img src="/img/function/move_arrow_off.svg" alt="이동"></li>
                     </a>
                 </ul>

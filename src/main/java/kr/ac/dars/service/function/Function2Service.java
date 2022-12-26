@@ -89,6 +89,7 @@ public class Function2Service {
                     }
                 }
             }
+            
             for(int i = 0; i < dto.size(); i++) {
                 inputStream = ftpClient.retrieveFileStream(dto.get(i).getSpeechcode()+".wav");
                 byte[] fileArray = IOUtils.toByteArray(inputStream);

@@ -3,7 +3,10 @@
 <mapper namespace="kr.ac.dars.dao.function.Function3Dao">
 	<select id="getAudioInfo"  resultType = "kr.ac.dars.dto.function.Function3Dto">
         select
-            f1.speechcode , f2.speechcontext , f1.questioncontext , f1.answer
+            f1.speechcode,
+            f2.speechcontext,
+            f1.questioncontext,
+            f1.answer
         from
             public.function3_2 f2
         left join

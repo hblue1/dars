@@ -6,7 +6,7 @@ $(document).ready(function(){
         addRowPos:"top",
         history:true,
         pagination:"local",
-        paginationSize:21,
+        paginationSize:21,//이부분 확인
         initialSort:[
             {column:"access_time",dir: "desc"}
         ],

@@ -3,7 +3,11 @@
 <mapper namespace="kr.ac.dars.dao.function.Function2Dao">
 	<select id="getAudioInfo1" parameterType = "kr.ac.dars.dto.function.Function2Dto" resultType = "kr.ac.dars.dto.function.Function2Dto">
         select
-            speechcode, speechcontext, questioncode, questioncontext, answer
+            speechcode,
+            speechcontext,
+            questioncode,
+            questioncontext,
+            answer
         from
             public.function2
         where
@@ -13,7 +17,11 @@
     </select>
     <select id="getAudioInfo2" parameterType = "kr.ac.dars.dto.function.Function2Dto" resultType = "kr.ac.dars.dto.function.Function2Dto">
         select
-            speechcode, speechcontext, questioncode, questioncontext, answer
+            speechcode,
+            speechcontext,
+            questioncode,
+            questioncontext,
+            answer
         from
             public.function2
         where

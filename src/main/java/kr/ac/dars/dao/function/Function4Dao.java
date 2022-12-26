@@ -10,5 +10,6 @@ import kr.ac.dars.dto.function.Function4Dto;
 @Repository
 @Mapper
 public interface Function4Dao {
-    public List<Function4Dto> getAudioInfo(Function4Dto dto);
+    public List<Function4Dto> getFirstInfo(int level);
+    public List<Function4Dto> getAudioInfo(String index);
 }

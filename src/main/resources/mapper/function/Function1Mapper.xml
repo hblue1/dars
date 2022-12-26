@@ -3,7 +3,8 @@
 <mapper namespace="kr.ac.dars.dao.function.Function1Dao">
 	<select id="getAudioInfo" resultType = "kr.ac.dars.dto.function.Function1Dto">
         select
-            filename, context
+            filename,
+            context
         from
             public.function1
         order by

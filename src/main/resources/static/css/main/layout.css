@@ -613,7 +613,14 @@ text-decoration: none;
     color: #68AFD3;
     text-align: center;
 }
+.text_context{
+    font-size: 30px;
+}
 /* 가로세로퀴즈 */
+.content_wrap{
+    overflow: auto;
+    overflow-x:hidden;
+}
 .qz_wrap{
     display: flex;
 }
@@ -632,9 +639,6 @@ text-decoration: none;
     /* height: 100px; */
     height: 100%;
     position: relative;
-}
-.qz_table td{
-    
 }
 .qz_left .qz_wrap .box{
     background-color: #63A4DB;

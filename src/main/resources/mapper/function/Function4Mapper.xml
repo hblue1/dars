@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.ac.dars.dao.function.Function4Dao">
-	<select id="getAudioInfo" parameterType = "kr.ac.dars.dto.function.Function4Dto" resultType = "kr.ac.dars.dto.function.Function4Dto">
-		SELECT
-            filename,
-			context
-		FROM
-			public.function4
-		WHERE
-			index = #{index}
+    <select id="getFirstInfo" parameterType = "int" resultType = "kr.ac.dars.dto.function.Function4Dto">
+        SELECT
+            index
+        FROM
+            public.function4
+        GROUP BY
+            index
+        HAVING
+            COUNT(index) = #{level}
+        ORDER BY
+            index asc
+        ;
+    </select>
+	<select id="getAudioInfo" parameterType = "String" resultType = "kr.ac.dars.dto.function.Function4Dto">
+        SELECT
+            index,
+            context
+        FROM
+            public.function4
+        WHERE 
+            index = #{index}
         ;
 	</select>
 </mapper>
