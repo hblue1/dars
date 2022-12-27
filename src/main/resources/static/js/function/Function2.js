@@ -26,6 +26,14 @@ $(document).ready(function(){
                 saudioData[i] = result[i].saudio;
                 qaudioData[i] = result[i].qaudio;
             }
+        },
+        beforeSend:function()
+        {    
+            $('.wrap-loading').removeClass('display-none');
+        },
+        complete:function()
+        {
+            $('.wrap-loading').addClass('display-none');
         }
     })
 })
@@ -68,6 +76,8 @@ function showContext() {
 
 function changeFile() {
     pauseAudioFile();
+    $("#speechcontext").text("재생하기");
+    checkShow = false;
     curruntIndex += 1;
     $("#answer").text(answer[curruntIndex]);
     $("#saudio").attr("src",saudioData[curruntIndex]);

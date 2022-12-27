@@ -31,6 +31,14 @@ $(document).ready(function(){
             $("#audio").attr("src",result[0].audio);
             setQuestionContext();
             playAudioFile();
+        },
+        beforeSend:function()
+        {    
+            $('.wrap-loading').removeClass('display-none');
+        },
+        complete:function()
+        {
+            $('.wrap-loading').addClass('display-none');
         }
     })
 })

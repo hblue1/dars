@@ -19,6 +19,7 @@ import kr.ac.dars.dto.function.Function1Dto;
 @Service
 @Transactional
 public class Function1Service {
+    // private static final String host = "192.168.35.244";
     private static final String host = "localhost";
     private static final String userName = "dragonseller_ftp";
     private static final String password = "DragonSeller*";
@@ -28,28 +29,6 @@ public class Function1Service {
     private Function1Dao dao;
 
     FTPClient ftpClient = null;
-
-    public List<Function1Dto> getAudioInfo() {
-        List<Function1Dto> result = dao.getAudioInfo();
-
-        String[] filename = new String[result.size()+1];
-        for(int i = 0; i < result.size(); i++){
-            filename[i] = result.get(i).getFilename();
-        }
-
-        filename[filename.length-1] = "noise";
-        List<String> file = getAudioFile(filename);
-        for(int i = 0; i < file.size()-1; i++){
-            result.get(i).setAudio(file.get(i));
-        }
-        
-        Function1Dto noise = new Function1Dto();
-        noise.setFilename("noise");
-        noise.setContext(null);
-        noise.setAudio(file.get(file.size()-1));
-        result.add(noise);
-        return result;
-    }
 
     public String connect() {
         String result = "connection failed";
@@ -81,6 +60,28 @@ public class Function1Service {
         }
     }
 
+    public List<Function1Dto> getAudioInfo() {
+        List<Function1Dto> result = dao.getAudioInfo();
+
+        String[] filename = new String[result.size()+1];
+        for(int i = 0; i < result.size(); i++){
+            filename[i] = result.get(i).getFilename();
+        }
+
+        filename[filename.length-1] = "noise";
+        List<String> file = getAudioFile(filename);
+        for(int i = 0; i < file.size()-1; i++){
+            result.get(i).setAudio(file.get(i));
+        }
+        
+        Function1Dto noise = new Function1Dto();
+        noise.setFilename("noise");
+        noise.setContext(null);
+        noise.setAudio(file.get(file.size()-1));
+        result.add(noise);
+        return result;
+    }
+
     // 경로, 파일명, 파일을 받아 해당 경로에 파일을 파일명으로 저장한다.
     public List<String> getAudioFile(String[] filename) {
         List<String> result = new ArrayList<String>();
@@ -98,9 +99,6 @@ public class Function1Service {
                     }
                 }
             }
-            // for(String str : ftpClient.listNames()) {
-            //     System.out.println("filename:"+str);
-            // }
             for(String str : filename) {
                 inputStream = ftpClient.retrieveFileStream(str+".wav");
                 byte[] fileArray = IOUtils.toByteArray(inputStream);

@@ -22,6 +22,14 @@ function loadFile() {
             drawBoard(result);
             setAudio(result);
             currentFile += 1;
+        },
+        beforeSend:function()
+        {    
+            $('.wrap-loading').removeClass('display-none');
+        },
+        complete:function()
+        {
+            $('.wrap-loading').addClass('display-none');
         }
     });
 }

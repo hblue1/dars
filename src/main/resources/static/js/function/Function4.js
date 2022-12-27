@@ -43,6 +43,14 @@ function changeFile(parameter) {
                 key.push(result[i]);
             }
             shuffleAndPrint(contextArray);
+        },
+        beforeSend:function()
+        {    
+            $('.wrap-loading').removeClass('display-none');
+        },
+        complete:function()
+        {
+            $('.wrap-loading').addClass('display-none');
         }
     })
 }

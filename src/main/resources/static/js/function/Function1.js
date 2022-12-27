@@ -17,6 +17,14 @@ $(document).ready(function(){
                 audioData[i] = result[i].audio;
                 audioInfo[i] = result[i].context;
             }
+        },
+        beforeSend:function()
+        {    
+            $('.wrap-loading').removeClass('display-none');
+        },
+        complete:function()
+        {
+            $('.wrap-loading').addClass('display-none');
         }
     })
 })

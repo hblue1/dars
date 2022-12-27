@@ -21,6 +21,7 @@ import kr.ac.dars.dto.function.Function5Dto;
 @Service
 @Transactional
 public class Function5Service {
+    // private static final String host = "192.168.35.244";
     private static final String host = "localhost";
     private static final String userName = "dragonseller_ftp";
     private static final String password = "DragonSeller*";
@@ -30,6 +31,36 @@ public class Function5Service {
     private Function5Dao dao;
 
     FTPClient ftpClient = null;
+
+    public String connect() {
+        String result = "connection failed";
+        try{
+            ftpClient = new FTPClient();
+
+            ftpClient.connect(host, port);
+            ftpClient.login(userName, password);
+            ftpClient.enterLocalPassiveMode();
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+            result = "connection success";
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    // ftp 연결을 해제한다.
+    public void disconnection() {
+        try {
+            if (ftpClient.isConnected()) {
+                ftpClient.logout();
+                ftpClient.disconnect();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public Function5Dto loadFile(Function5Dto dto) {
         Function5Dto result = dao.loadFile(dto);
@@ -81,35 +112,5 @@ public class Function5Service {
             disconnection();
         }
         return result;
-    }
-
-    public String connect() {
-        String result = "connection failed";
-        try{
-            ftpClient = new FTPClient();
-
-            ftpClient.connect(host, port);
-            ftpClient.login(userName, password);
-            ftpClient.enterLocalPassiveMode();
-            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-            result = "connection success";
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        return result;
-    }
-
-    // ftp 연결을 해제한다.
-    public void disconnection() {
-        try {
-            if (ftpClient.isConnected()) {
-                ftpClient.logout();
-                ftpClient.disconnect();
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 }

@@ -18,6 +18,7 @@ import kr.ac.dars.dto.function.Function2Dto;
 @Service
 @Transactional
 public class Function2Service {
+    // private static final String host = "192.168.35.244";
     private static final String host = "localhost";
     private static final String userName = "dragonseller_ftp";
     private static final String password = "DragonSeller*";
