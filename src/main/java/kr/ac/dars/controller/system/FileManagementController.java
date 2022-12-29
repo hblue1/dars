@@ -29,7 +29,7 @@ public class FileManagementController {
         memberInfo.add(uservice.getMemberInfo(authentication.getName()).getName());
         memberInfo.add(uservice.getMemberInfo(authentication.getName()).getCellphone());
         model.addAttribute("member", memberInfo);
-        return "/system/FileManagement.html";
+        return "system/FileManagement.html";
     }
 
     @PostMapping(value = "/system/getFileInfo")
