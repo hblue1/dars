@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var table = new Tabulator("#FileInfo", {
+    var table = new Tabulator("#UserActivity", {
         maxHeight: "100%",
         layout:"fitDataTable",
         tooltips:true,
@@ -11,16 +11,14 @@ $(document).ready(function(){
             {column:"file_path",dir: "asc"}
         ],
         columns:[
-            {title:"파일 이름", field:"name",width:200},
-            {title:"파일 확장자", field:"extension", hozAlign:"left", width:130},
-            {title:"파일 경로", field:"file_path",width:350},
-            {title:"파일 생성일", field:"date_created",width:250},
-            {title:"파일 변경일", field:"date_modified",width:250}
+            {title:"사용자 이름", field:"user_id",width:200},
+            {title:"훈련", field:"activity", hozAlign:"left", width:130},
+            {title:"훈련 시간(초)", field:"activity_time",width:350},
         ],
     });
     $.ajax({
         type:"POST",
-        url:"/system/getFileInfo",
+        url:"/system/getUserActivity",
         success:function(result)
         {
             table.setData(result);

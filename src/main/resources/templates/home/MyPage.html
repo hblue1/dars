@@ -11,15 +11,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/css/main/common.css">
     <link rel="stylesheet" href="/css/main/layout.css">
-    <link rel="stylesheet" href="/css/common/tabulator.css" />
-    <link rel="stylesheet" href="/css/main/tab.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <!-- 이부분 html 레이아웃으로 다시 만들 것 -->
-    <script src="/js/common/jquery-3.6.0.min.js"></script>
-    <script src="/js/common/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/js/common/tabulator.min.js"></script>    
-    <script src="/js/system/FileManagement.js"></script>
-    <title>파일 관리 페이지</title>
+    <title>청각검사플랫폼</title>
 </head>
 <body>
     <div class="platform_wrap">
@@ -50,20 +42,39 @@
                 </ul>
             </div>
         </div>
-        <main>
-            <div id="FileInfo"></div>
-        </main>
-    </div>
-    <!-- (공통) 내 정보 확인 팝업 -->
-    <div class="pop" style="display: none;">
-        <div class="user" th:each="string : ${member}">
-            <div class="photo"><img src="/img/home/user.png" alt=""></div>
-            <div class="name" th:text="${member[0]}"></div>
-            <div class="nb" th:text="${member[1]}"></div>
-            <input type="button" value="마이페이지" class="btn_global userbtn" onclick = "location.href='/home/MyPage'">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="로그아웃" class="btn_global userbtn">
-            </form>
+        <div class="info_tb">
+            <div class="tit">회원정보 수정</div>
+            <table>
+                <tr>
+                    <td>아이디(이메일)</td>
+                    <td th:text="${member[0]}">hong123</td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td th:text="${member[1]}">홍길동</td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td th:text="${member[2]}">010-1234-5678</td>
+                </tr>
+                <tr>
+                    <td>비밀번호변경</td>
+                    <td> 
+                        <div class="pw_wrap"> <p>현재비밀번호</p>  <input type="text"></div>
+                        <div class="pw_wrap"> <p>새비밀번호</p> <input type="text"></div>
+                        <div class="pw_wrap"> <p>비밀번호확인</p> <input type="text"></div>
+                        <input type="button" value="비밀번호변경" class="btn_global">
+                    </td>
+                </tr>
+                <tr sec:authorize ="hasAnyRole('SYSTEM','MANAGER')">
+                    <td>매니저 메뉴</td>
+                    <td>
+                        <input type="button" value="사용자 관리" class="btn_global" style="background: rgb(207, 207, 207)" onclick="location.href='/system/UserActivity'">
+                        <input type="button" value="파일 관리" class="btn_global" style="background: rgb(207, 207, 207)" onclick="location.href='/system/FileManagement'">
+                        <input type="button" value="로그 관리" sec:authorize ="hasRole('SYSTEM')" class="btn_global" onclick="location.href='/system/UserLog'">
+                    </td>
+                </tr>
+         </table>
         </div>
     </div>
 </body>

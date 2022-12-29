@@ -1,6 +1,7 @@
 var index = [];
 var key = [];
 var curruntIndex = 0;
+var startTime;
 
 $(document).ready(function(){
     data = {
@@ -17,6 +18,9 @@ $(document).ready(function(){
                 index.push(result[i].index);
             }
             changeFile(index[curruntIndex]);
+
+            let now = new Date();   
+            startTime = now;
         }
     })
 })
@@ -27,6 +31,12 @@ function getLevel() {
 }
 
 function changeFile(parameter) {
+    pauseAudioFile();
+    if(curruntIndex >= index.length) {
+        alert("모두 끝났습니다.");
+        location.href="/home/FunctionSelect";
+        return;
+    }
     data = {
         index : parameter
     }
@@ -78,6 +88,12 @@ function playAudioFile() {
     document.getElementById(name).play();
 }
 
+function pauseAudioFile() {
+    var name = "audio";
+    document.getElementById(name).pause();
+    document.getElementById(name).currentTime=0;
+}
+
 function inputFocus(n) {
     var name = "context"+(n+1);
     document.getElementById(name).focus();
@@ -94,3 +110,24 @@ function showAnswer() {
     key.length = 0;
     changeFile(index[curruntIndex]);
 }
+
+// (공통) 내 정보 확인 팝업
+window.addEventListener('click',(e) => {
+    if(e.target.id == "user"){
+        $(".pop").css("display","block");
+        return 0;
+    }
+
+    if( $(".pop").css("display") == "block" &&
+        e.target.parentNode.className != "pop" &&
+        e.target.parentNode.className != "user" &&
+        e.target.parentNode.className != "photo") {
+        $(".pop").css("display","none");
+    }
+})
+
+window.addEventListener('unload', function() {
+    let now = new Date();
+    let result = (now-startTime)/1000;
+    navigator.sendBeacon("/function/Function4/UserActivity",result);
+});

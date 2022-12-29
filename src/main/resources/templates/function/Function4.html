@@ -42,7 +42,7 @@
                     <form th:action="@{/logout}" method="post">
                         <li><input type="submit" value="로그아웃" class="btn_global"></li>
                     </form>
-                    <li><img src="/img/home/user.png" alt="유저"></li>
+                    <li><img src="/img/home/user.png" alt="유저" id = "user"></li>
                 </ul>
             </div>
         </div>
@@ -74,6 +74,19 @@
             </div>
         </div>
     </div>
+    <!-- (공통) 내 정보 확인 팝업 -->
+    <div class="pop" style="display: none;">
+        <div class="user" th:each="string : ${member}">
+            <div class="photo"><img src="/img/home/user.png" alt=""></div>
+            <div class="name" th:text="${member[0]}"></div>
+            <div class="nb" th:text="${member[1]}"></div>
+            <input type="button" value="마이페이지" class="btn_global userbtn" onclick = "location.href='/home/MyPage'">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="로그아웃" class="btn_global userbtn">
+            </form>
+        </div>
+    </div>
+    <!-- (훈련공통) 로딩 팝업 -->
     <div class="wrap-loading" display-none>
         <div><img src="/img/function/loading.png" /></div>
     </div>

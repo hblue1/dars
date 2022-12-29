@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.dars.dao.system.UserActivityDao">
+    <insert id="insertUserActivity" parameterType = "kr.ac.dars.dto.system.UserActivityDto">
+        INSERT INTO
+            public.user_activity
+        (
+            id,
+            activity,
+            activity_time
+        )
+            VALUES
+        (
+            #{id},
+            #{activity},
+            #{activity_time}
+        );
+	</insert>
+    <select id="getUserActivity" parameterType="String" resultType = "kr.ac.dars.dto.system.UserActivityDto">
+        SELECT
+            ua.id as user_id,
+            ua2.activity as activity,
+            ua2.activity_time as activity_time
+        FROM
+            user_assignment ua,
+            user_activity ua2 
+        WHERE
+            ua.id = ua2.id AND
+            ua.manager = #{id}
+        ;
+    </select>
+</mapper>

@@ -6,6 +6,7 @@ var questionArray;
 var checkShow = false;
 var curruntIndex = 0;
 var startIndex = 0;
+var startTime;
 
 $(document).ready(function(){
     data = {
@@ -30,7 +31,9 @@ $(document).ready(function(){
             $("#answer").text(result[0].answer);
             $("#audio").attr("src",result[0].audio);
             setQuestionContext();
-            playAudioFile();
+
+            let now = new Date();   
+            startTime = now;
         },
         beforeSend:function()
         {    
@@ -109,7 +112,8 @@ function changeFile() {
     pauseAudioFile();
     curruntIndex += 1;
     if(curruntIndex >= questionArray.length) {
-        alert("모두 끝났습니다.")
+        alert("모두 끝났습니다.");
+        location.href="/home/FunctionSelect";
         return;
     }
     startIndex += questionArray[curruntIndex];
@@ -125,3 +129,24 @@ function changeFile() {
     checkShow = true;
     showContext();
 }
+
+// (공통) 내 정보 확인 팝업
+window.addEventListener('click',(e) => {
+    if(e.target.id == "user"){
+        $(".pop").css("display","block");
+        return 0;
+    }
+
+    if( $(".pop").css("display") == "block" &&
+        e.target.parentNode.className != "pop" &&
+        e.target.parentNode.className != "user" &&
+        e.target.parentNode.className != "photo") {
+        $(".pop").css("display","none");
+    }
+})
+
+window.addEventListener('unload', function() {
+    let now = new Date();
+    let result = (now-startTime)/1000;
+    navigator.sendBeacon("/function/Function3/UserActivity",result);
+});

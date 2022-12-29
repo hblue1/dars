@@ -1,4 +1,4 @@
-package kr.ac.dars.controller.function;
+package kr.ac.dars.controller.home;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.ac.dars.service.security.UserService;
 
 @Controller
-public class Function3DController {
+public class EditPIController {
     @Autowired
-    private UserService uservice;
+    private UserService service;
     
-    @RequestMapping(value = "/function/Function3D")
+    @RequestMapping(value = "/home/MyPage")
     public String home(Authentication authentication, Model model)
     {
         List<String> memberInfo = new ArrayList<String>();
-        memberInfo.add(uservice.getMemberInfo(authentication.getName()).getName());
-        memberInfo.add(uservice.getMemberInfo(authentication.getName()).getCellphone());
+        memberInfo.add(authentication.getName());
+        memberInfo.add(service.getMemberInfo(authentication.getName()).getName());
+        memberInfo.add(service.getMemberInfo(authentication.getName()).getCellphone());
+        // memberInfo.add(service.getMemberInfo(authentication.getName()).getEmail());
         model.addAttribute("member", memberInfo);
-        
-        return "function/Function3D.html";
+
+        return "/home/MyPage.html";
     }
 }

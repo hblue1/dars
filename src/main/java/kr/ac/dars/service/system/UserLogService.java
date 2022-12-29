@@ -22,4 +22,6 @@ public class UserLogService {
     public List<UserLogDto> getUserLog() {
         return dao.getUserLog();
     }
+
+    
 }

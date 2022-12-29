@@ -1,6 +1,7 @@
 var audioInfo = [];
 var audioData = [];
 var curruntIndex = 0;
+var startTime;
 
 $(document).ready(function(){
     getNoise();
@@ -17,6 +18,9 @@ $(document).ready(function(){
                 audioData[i] = result[i].audio;
                 audioInfo[i] = result[i].context;
             }
+
+            let now = new Date();   
+            startTime = now;
         },
         beforeSend:function()
         {    
@@ -72,8 +76,35 @@ function replayAudioFile() {
 
 function changeFile() {
     pauseAudioFile();
+    if(curruntIndex >= audioInfo.length) {
+        alert("모두 끝났습니다.")
+        location.href="/home/FunctionSelect"
+        return;
+    }
     getNoise();
     curruntIndex += 1;
     $("#answer").text(audioInfo[curruntIndex]);
     $("#audio").attr("src",audioData[curruntIndex]);
 }
+
+// (공통) 내 정보 확인 팝업
+window.addEventListener('click',(e) => {
+    if(e.target.id == "user"){
+        $(".pop").css("display","block");
+        console.log("wtf")
+        return 0;
+    }
+
+    if( $(".pop").css("display") == "block" &&
+        e.target.parentNode.className != "pop" &&
+        e.target.parentNode.className != "user" &&
+        e.target.parentNode.className != "photo") {
+        $(".pop").css("display","none");
+    }
+})
+
+window.addEventListener('unload', function() {
+    let now = new Date();
+    let result = (now-startTime)/1000;
+    navigator.sendBeacon("/function/Function1/UserActivity",result);
+});

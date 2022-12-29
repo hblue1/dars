@@ -4,6 +4,7 @@ var saudioData = [];
 var qaudioData = [];
 var checkShow = false;
 var curruntIndex = 0;
+var startTime;
 
 $(document).ready(function(){
     data = {
@@ -26,6 +27,9 @@ $(document).ready(function(){
                 saudioData[i] = result[i].saudio;
                 qaudioData[i] = result[i].qaudio;
             }
+
+            let now = new Date();   
+            startTime = now;
         },
         beforeSend:function()
         {    
@@ -76,6 +80,11 @@ function showContext() {
 
 function changeFile() {
     pauseAudioFile();
+    if(curruntIndex >= answer.length) {
+        alert("모두 끝났습니다.");
+        location.href="/home/FunctionSelect";
+        return;
+    }
     $("#speechcontext").text("재생하기");
     checkShow = false;
     curruntIndex += 1;
@@ -83,3 +92,24 @@ function changeFile() {
     $("#saudio").attr("src",saudioData[curruntIndex]);
     $("#qaudio").attr("src",qaudioData[curruntIndex]);
 }
+
+// (공통) 내 정보 확인 팝업
+window.addEventListener('click',(e) => {
+    if(e.target.id == "user"){
+        $(".pop").css("display","block");
+        return 0;
+    }
+
+    if( $(".pop").css("display") == "block" &&
+        e.target.parentNode.className != "pop" &&
+        e.target.parentNode.className != "user" &&
+        e.target.parentNode.className != "photo") {
+        $(".pop").css("display","none");
+    }
+})
+
+window.addEventListener('unload', function() {
+    let now = new Date();
+    let result = (now-startTime)/1000;
+    navigator.sendBeacon("/function/Function2/UserActivity",result);
+});

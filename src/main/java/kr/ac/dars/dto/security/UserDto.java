@@ -15,6 +15,8 @@ public class UserDto {
     private String id;
     private String password;
     private String name;
+    private String email;
+    private String cellphone;
     private Set<Long> roles;
 
     public User toEntity(Set<Role> roles) {

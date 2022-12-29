@@ -1,4 +1,5 @@
 currentFile = 1;
+var startTime;
 
 $(document).ready(function(){
     loadFile();
@@ -8,6 +9,7 @@ function loadFile() {
     $("#quiz").empty();
     if(currentFile == 100) {
         alert("퀴즈가 끝났습니다!");
+        location.href="/home/FunctionSelect";
         return 0;
     }
     data = {
@@ -21,6 +23,9 @@ function loadFile() {
         {
             drawBoard(result);
             setAudio(result);
+
+            let now = new Date();   
+            startTime = now;
             currentFile += 1;
         },
         beforeSend:function()
@@ -221,3 +226,24 @@ function getArray(arr) {
 
     return final;
 }
+
+// (공통) 내 정보 확인 팝업
+window.addEventListener('click',(e) => {
+    if(e.target.id == "user"){
+        $(".pop").css("display","block");
+        return 0;
+    }
+
+    if( $(".pop").css("display") == "block" &&
+        e.target.parentNode.className != "pop" &&
+        e.target.parentNode.className != "user" &&
+        e.target.parentNode.className != "photo") {
+        $(".pop").css("display","none");
+    }
+})
+
+window.addEventListener('unload', function() {
+    let now = new Date();
+    let result = (now-startTime)/1000;
+    navigator.sendBeacon("/function/Function5/UserActivity",result);
+});
