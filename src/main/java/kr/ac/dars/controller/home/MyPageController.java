@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.ac.dars.service.security.UserService;
 
 @Controller
-public class EditPIController {
+public class MyPageController {
     @Autowired
     private UserService service;
     
@@ -26,6 +26,6 @@ public class EditPIController {
         // memberInfo.add(service.getMemberInfo(authentication.getName()).getEmail());
         model.addAttribute("member", memberInfo);
 
-        return "/home/MyPage.html";
+        return "home/MyPage.html";
     }
 }
