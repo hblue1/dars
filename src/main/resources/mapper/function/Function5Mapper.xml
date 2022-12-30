@@ -11,7 +11,7 @@
             horizontal,
             vertical
         from
-            public.function5
+            public.function5_1
         where
             index = #{index}
         ;

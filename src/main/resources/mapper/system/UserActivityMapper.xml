@@ -11,7 +11,7 @@
         )
             VALUES
         (
-            #{id},
+            #{user_id},
             #{activity},
             #{activity_time}
         );
